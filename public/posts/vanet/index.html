@@ -1,0 +1,1554 @@
+<!doctype html>
+<html
+  lang="tr"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/tg-blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=tg-blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="tr">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title> &middot; Tuna Girişken - Embedded Systems Blog</title>
+    <meta name="title" content=" &middot; Tuna Girişken - Embedded Systems Blog">
+  
+
+  
+  
+    <meta name="description" content="Embedded Linux, Yocto, safety-critical systems ve real-time automotive solutions">
+  
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/tg-blog/posts/vanet/">
+  
+
+  
+  
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/tg-blog/posts/vanet/">
+  <meta property="og:site_name" content="Tuna Girişken - Embedded Systems Blog">
+  <meta property="og:title" content="Tuna Girişken - Embedded Systems Blog">
+  <meta property="og:description" content="Vehicular Ad-Hoc Networks (VANET): Akıllı Ulaşımın Geleceği # Modern ulaşım sistemleri hızla dijitalleşiyor ve araçlar artık sadece birer taşıt değil, aynı zamanda birbirleriyle ve çevreleriyle sürekli iletişim halinde olan akıllı cihazlar haline geliyor. Bu dönüşümün merkezinde Vehicular Ad-Hoc Networks (VANET) teknolojisi yer alıyor. Peki VANET nedir ve neden bu kadar önemli? Bu yazıda, VANET’in temellerinden uygulamalarına kadar her şeyi detaylıca inceleyeceğiz.">
+  <meta property="og:locale" content="tr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tuna Girişken - Embedded Systems Blog">
+  <meta name="twitter:description" content="Vehicular Ad-Hoc Networks (VANET): Akıllı Ulaşımın Geleceği # Modern ulaşım sistemleri hızla dijitalleşiyor ve araçlar artık sadece birer taşıt değil, aynı zamanda birbirleriyle ve çevreleriyle sürekli iletişim halinde olan akıllı cihazlar haline geliyor. Bu dönüşümün merkezinde Vehicular Ad-Hoc Networks (VANET) teknolojisi yer alıyor. Peki VANET nedir ve neden bu kadar önemli? Bu yazıda, VANET’in temellerinden uygulamalarına kadar her şeyi detaylıca inceleyeceğiz.">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/tg-blog/css/main.bundle.min.a21babae33fe0e831091eeec6aee1f320d15e90ccbb77d8b5df7f80d64bc176d116e8a8226acd4d3fd91485aafc2aa8527e2e2bb68c63129d4b7f7dacb7afc9b.css"
+    integrity="sha512-ohurrjP&#43;DoMQke7sau4fMg0V6QzLt32LXff4DWS8F20RboqCJqzU0/2RSFqvwqqFJ&#43;Liu2jGMSnUt/fay3r8mw==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/tg-blog/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/tg-blog/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/tg-blog/js/main.bundle.min.9cc802d09f28c6af56ceee7bc6e320a39251fdae98243f2a9942f221ac57a9f49c51609699a91794a7b2580ee1deaa8e4d794a68ffa94aa317c66e893ce51e02.js"
+      integrity="sha512-nMgC0J8oxq9Wzu57xuMgo5JR/a6YJD8qmULyIaxXqfScUWCWmakXlKeyWA7h3qqOTXlKaP&#43;pSqMXxm6JPOUeAg=="
+      data-copy="Kopyala"
+      data-copied="Kopyalandı"></script>
+  
+
+  
+  
+
+<script src="/tg-blog/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/tg-blog/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/tg-blog/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/tg-blog/favicon-16x16.png">
+    <link rel="manifest" href="/tg-blog/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "",
+    "headline": "",
+    
+    "abstract": "\u003ch1 class=\u0022relative group\u0022\u003eVehicular Ad-Hoc Networks (VANET): Akıllı Ulaşımın Geleceği\n    \u003cdiv id=\u0022vehicular-ad-hoc-networks-vanet-akıllı-ulaşımın-geleceği\u0022 class=\u0022anchor\u0022\u003e\u003c\/div\u003e\n    \n    \u003cspan\n        class=\u0022absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none\u0022\u003e\n        \u003ca class=\u0022text-primary-300 dark:text-neutral-700 !no-underline\u0022 href=\u0022#vehicular-ad-hoc-networks-vanet-ak%c4%b1ll%c4%b1-ula%c5%9f%c4%b1m%c4%b1n-gelece%c4%9fi\u0022 aria-label=\u0022\u0022\u003e#\u003c\/a\u003e\n    \u003c\/span\u003e\n    \n\u003c\/h1\u003e\n\u003cp\u003eModern ulaşım sistemleri hızla dijitalleşiyor ve araçlar artık sadece birer taşıt değil, aynı zamanda birbirleriyle ve çevreleriyle sürekli iletişim halinde olan akıllı cihazlar haline geliyor. Bu dönüşümün merkezinde \u003cstrong\u003eVehicular Ad-Hoc Networks (VANET)\u003c\/strong\u003e teknolojisi yer alıyor. Peki VANET nedir ve neden bu kadar önemli? Bu yazıda, VANET\u0026rsquo;in temellerinden uygulamalarına kadar her şeyi detaylıca inceleyeceğiz.\u003c\/p\u003e",
+    "inLanguage": "tr",
+    "url" : "http:\/\/localhost:1313\/tg-blog\/posts\/vanet\/",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1726"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+      <script>
+
+    const firebaseConfig = {
+      apiKey: "",
+      authDomain: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: "",
+      measurementId: ""
+    };
+
+        var app = firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        var auth = firebase.auth();
+
+      </script>
+    
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Ana içeriğe geç
+      </a>
+    </div>
+    
+    
+      <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 z-100">
+  <div
+    id="menu-blur"
+    class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/tg-blog/" class="text-base font-medium">
+          Tuna Girişken - Embedded Systems Blog
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/tg-blog/posts/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="📝 Yazılar"
+  title="Posts">
+  
+  
+    <p class="text-base font-medium">
+      📝 Yazılar
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/tg-blog/tags/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="🏷️ Etiketler"
+  title="Tags">
+  
+  
+    <p class="text-base font-medium">
+      🏷️ Etiketler
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/tg-blog/categories/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="📂 Kategoriler"
+  title="Categories">
+  
+  
+    <p class="text-base font-medium">
+      📂 Kategoriler
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/tg-blog/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="👤 Hakkımda"
+  title="Hakkımda">
+  
+  
+    <p class="text-base font-medium">
+      👤 Hakkımda
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Ara (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Ara (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/tg-blog/posts/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="📝 Yazılar"
+    title="Posts">
+    
+    
+      <p class="text-bg font-bg">
+        📝 Yazılar
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/tg-blog/tags/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="🏷️ Etiketler"
+    title="Tags">
+    
+    
+      <p class="text-bg font-bg">
+        🏷️ Etiketler
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/tg-blog/categories/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="📂 Kategoriler"
+    title="Categories">
+    
+    
+      <p class="text-bg font-bg">
+        📂 Kategoriler
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/tg-blog/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="👤 Hakkımda"
+    title="Hakkımda">
+    
+    
+      <p class="text-bg font-bg">
+        👤 Hakkımda
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<script
+  type="text/javascript"
+  src="/tg-blog/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+  integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+  data-blur-id="menu-blur"></script>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+
+
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="0001-01-01T00:00:00&#43;00:00">1 Ocak 0001</time><span class="px-2 text-primary-500">&middot;</span><span>1726 kelime</span><span class="px-2 text-primary-500">&middot;</span><span title="Okuma süresi">9 dk</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+  <div class="place-self-center">
+    
+    
+    <div class="text-2xl sm:text-lg">
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-[140px]">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ad-hoc-networks-temel-kavramlar">Ad-Hoc Networks: Temel Kavramlar</a></li>
+    <li><a href="#ad-hoc-networksün-temel-özellikleri">Ad-Hoc Networks&rsquo;ün Temel Özellikleri</a>
+      <ul>
+        <li><a href="#1-merkezi-olmayan-decentralized-mimari">1. Merkezi Olmayan (Decentralized) Mimari</a></li>
+        <li><a href="#2-kendi-kendini-organize-edebilme-self-organizing">2. Kendi Kendini Organize Edebilme (Self-Organizing)</a></li>
+        <li><a href="#3-dinamik-topoloji-dynamic-topology">3. Dinamik Topoloji (Dynamic Topology)</a></li>
+        <li><a href="#4-çok-atlama-multi-hop-iletişimi">4. Çok Atlama (Multi-Hop) İletişimi</a></li>
+        <li><a href="#5-enerji-kısıtlılık-energy-constraints">5. Enerji Kısıtlılık (Energy Constraints)</a></li>
+        <li><a href="#6-kısıtlı-bant-genişliği-limited-bandwidth">6. Kısıtlı Bant Genişliği (Limited Bandwidth)</a></li>
+      </ul>
+    </li>
+    <li><a href="#ad-hoc-networks-ağ-mimarisi">Ad-Hoc Networks Ağ Mimarisi</a>
+      <ul>
+        <li><a href="#ağ-mimarisi-türleri">Ağ Mimarisi Türleri</a></li>
+      </ul>
+    </li>
+    <li><a href="#ad-hoc-networks-türleri">Ad-Hoc Networks Türleri</a>
+      <ul>
+        <li><a href="#manet-mobile-ad-hoc-network">MANET (Mobile Ad-hoc Network)</a></li>
+        <li><a href="#vanet-vehicular-ad-hoc-network">VANET (Vehicular Ad-hoc Network)</a></li>
+        <li><a href="#sanet-sensor-ad-hoc-network">SANET (Sensor Ad-hoc Network)</a></li>
+        <li><a href="#fanet-flying-ad-hoc-network">FANET (Flying Ad-hoc Network)</a></li>
+      </ul>
+    </li>
+    <li><a href="#vanet-araç-ağlarının-derinlemesine-incelenmesi">VANET: Araç Ağlarının Derinlemesine İncelenmesi</a></li>
+    <li><a href="#vanet-ağ-mimarisi">VANET Ağ Mimarisi</a>
+      <ul>
+        <li><a href="#v2v-vehicle-to-vehicle-araçlar-arası-iletişim">V2V (Vehicle-to-Vehicle): Araçlar Arası İletişim</a></li>
+        <li><a href="#v2i-vehicle-to-infrastructure-araçtan-altyapıya-iletişim">V2I (Vehicle-to-Infrastructure): Araçtan Altyapıya İletişim</a></li>
+        <li><a href="#v2p-vehicle-to-pedestrian-araçtan-yayaya-iletişim">V2P (Vehicle-to-Pedestrian): Araçtan Yayaya İletişim</a></li>
+        <li><a href="#v2x-vehicle-to-everything-her-şeye-bağlı-araç">V2X (Vehicle-to-Everything): Her Şeye Bağlı Araç</a></li>
+      </ul>
+    </li>
+    <li><a href="#vanet-birimleri">VANET Birimleri</a>
+      <ul>
+        <li><a href="#onboard-unit-obu-araç-üstü-birim">Onboard Unit (OBU): Araç Üstü Birim</a></li>
+        <li><a href="#roadside-unit-rsu-yol-kenarı-birimi">Roadside Unit (RSU): Yol Kenarı Birimi</a></li>
+      </ul>
+    </li>
+    <li><a href="#vanet-yönlendirme-protokolleri">VANET Yönlendirme Protokolleri</a>
+      <ul>
+        <li><a href="#vanete-özgü-zorluklar">VANET&rsquo;e Özgü Zorluklar</a></li>
+      </ul>
+    </li>
+    <li><a href="#sonuç-vanetin-geleceği">Sonuç: VANET&rsquo;in Geleceği</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ad-hoc-networks-temel-kavramlar">Ad-Hoc Networks: Temel Kavramlar</a></li>
+    <li><a href="#ad-hoc-networksün-temel-özellikleri">Ad-Hoc Networks&rsquo;ün Temel Özellikleri</a>
+      <ul>
+        <li><a href="#1-merkezi-olmayan-decentralized-mimari">1. Merkezi Olmayan (Decentralized) Mimari</a></li>
+        <li><a href="#2-kendi-kendini-organize-edebilme-self-organizing">2. Kendi Kendini Organize Edebilme (Self-Organizing)</a></li>
+        <li><a href="#3-dinamik-topoloji-dynamic-topology">3. Dinamik Topoloji (Dynamic Topology)</a></li>
+        <li><a href="#4-çok-atlama-multi-hop-iletişimi">4. Çok Atlama (Multi-Hop) İletişimi</a></li>
+        <li><a href="#5-enerji-kısıtlılık-energy-constraints">5. Enerji Kısıtlılık (Energy Constraints)</a></li>
+        <li><a href="#6-kısıtlı-bant-genişliği-limited-bandwidth">6. Kısıtlı Bant Genişliği (Limited Bandwidth)</a></li>
+      </ul>
+    </li>
+    <li><a href="#ad-hoc-networks-ağ-mimarisi">Ad-Hoc Networks Ağ Mimarisi</a>
+      <ul>
+        <li><a href="#ağ-mimarisi-türleri">Ağ Mimarisi Türleri</a></li>
+      </ul>
+    </li>
+    <li><a href="#ad-hoc-networks-türleri">Ad-Hoc Networks Türleri</a>
+      <ul>
+        <li><a href="#manet-mobile-ad-hoc-network">MANET (Mobile Ad-hoc Network)</a></li>
+        <li><a href="#vanet-vehicular-ad-hoc-network">VANET (Vehicular Ad-hoc Network)</a></li>
+        <li><a href="#sanet-sensor-ad-hoc-network">SANET (Sensor Ad-hoc Network)</a></li>
+        <li><a href="#fanet-flying-ad-hoc-network">FANET (Flying Ad-hoc Network)</a></li>
+      </ul>
+    </li>
+    <li><a href="#vanet-araç-ağlarının-derinlemesine-incelenmesi">VANET: Araç Ağlarının Derinlemesine İncelenmesi</a></li>
+    <li><a href="#vanet-ağ-mimarisi">VANET Ağ Mimarisi</a>
+      <ul>
+        <li><a href="#v2v-vehicle-to-vehicle-araçlar-arası-iletişim">V2V (Vehicle-to-Vehicle): Araçlar Arası İletişim</a></li>
+        <li><a href="#v2i-vehicle-to-infrastructure-araçtan-altyapıya-iletişim">V2I (Vehicle-to-Infrastructure): Araçtan Altyapıya İletişim</a></li>
+        <li><a href="#v2p-vehicle-to-pedestrian-araçtan-yayaya-iletişim">V2P (Vehicle-to-Pedestrian): Araçtan Yayaya İletişim</a></li>
+        <li><a href="#v2x-vehicle-to-everything-her-şeye-bağlı-araç">V2X (Vehicle-to-Everything): Her Şeye Bağlı Araç</a></li>
+      </ul>
+    </li>
+    <li><a href="#vanet-birimleri">VANET Birimleri</a>
+      <ul>
+        <li><a href="#onboard-unit-obu-araç-üstü-birim">Onboard Unit (OBU): Araç Üstü Birim</a></li>
+        <li><a href="#roadside-unit-rsu-yol-kenarı-birimi">Roadside Unit (RSU): Yol Kenarı Birimi</a></li>
+      </ul>
+    </li>
+    <li><a href="#vanet-yönlendirme-protokolleri">VANET Yönlendirme Protokolleri</a>
+      <ul>
+        <li><a href="#vanete-özgü-zorluklar">VANET&rsquo;e Özgü Zorluklar</a></li>
+      </ul>
+    </li>
+    <li><a href="#sonuç-vanetin-geleceği">Sonuç: VANET&rsquo;in Geleceği</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h1 class="relative group">Vehicular Ad-Hoc Networks (VANET): Akıllı Ulaşımın Geleceği
+    <div id="vehicular-ad-hoc-networks-vanet-akıllı-ulaşımın-geleceği" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#vehicular-ad-hoc-networks-vanet-ak%c4%b1ll%c4%b1-ula%c5%9f%c4%b1m%c4%b1n-gelece%c4%9fi" aria-label="">#</a>
+    </span>
+    
+</h1>
+<p>Modern ulaşım sistemleri hızla dijitalleşiyor ve araçlar artık sadece birer taşıt değil, aynı zamanda birbirleriyle ve çevreleriyle sürekli iletişim halinde olan akıllı cihazlar haline geliyor. Bu dönüşümün merkezinde <strong>Vehicular Ad-Hoc Networks (VANET)</strong> teknolojisi yer alıyor. Peki VANET nedir ve neden bu kadar önemli? Bu yazıda, VANET&rsquo;in temellerinden uygulamalarına kadar her şeyi detaylıca inceleyeceğiz.</p>
+
+<h2 class="relative group">Ad-Hoc Networks: Temel Kavramlar
+    <div id="ad-hoc-networks-temel-kavramlar" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ad-hoc-networks-temel-kavramlar" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>VANET&rsquo;i anlamadan önce, Ad-Hoc ağların ne olduğunu kavramak gerekiyor. <strong>Ad-hoc network</strong>, kelime anlamı olarak &ldquo;anlık, belirli bir amaç için oluşturulan&rdquo; ağ demektir. Bilgisayar ağları bağlamında ise önceden var olan bir altyapıya ihtiyaç duymadan, birbirine doğrudan bağlanan düğümlerden oluşan kendi kendini organize eden kablosuz ağlar anlamına gelir.</p>
+<p>Bu ağların en önemli özelliği, merkezi bir yönlendirici (router), erişim noktası (access point) veya baz istasyonu olmamasıdır. Her düğüm hem istemci hem de yönlendirici görevi görebilir. Düğümler arası iletişim çok atlamalı (multi-hop) olabilir; yani A → B → C şeklinde veri aktarımı yapılabilir.</p>
+
+<h2 class="relative group">Ad-Hoc Networks&rsquo;ün Temel Özellikleri
+    <div id="ad-hoc-networksün-temel-özellikleri" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ad-hoc-networks%c3%bcn-temel-%c3%b6zellikleri" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">1. Merkezi Olmayan (Decentralized) Mimari
+    <div id="1-merkezi-olmayan-decentralized-mimari" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-merkezi-olmayan-decentralized-mimari" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Klasik ağlarda iletişim genellikle bir erişim noktası üzerinden yürürken, Ad-hoc ağlarda merkezi bir yönetici yoktur. Her bir düğüm (node) hem istemci hem yönlendirici görevi görür. Bu sayede ağ, herhangi bir merkez noktasının çökmesi durumunda bile iletişimi sürdürebilir ve tek hata noktasını (single point of failure) ortadan kaldırır.</p>
+<p>Ancak bu durum yönlendirme ve kaynak yönetimi süreçlerini karmaşıklaştırır, çünkü ağdaki tüm düğümler bu yükü paylaşmak zorundadır.</p>
+
+<h3 class="relative group">2. Kendi Kendini Organize Edebilme (Self-Organizing)
+    <div id="2-kendi-kendini-organize-edebilme-self-organizing" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-kendi-kendini-organize-edebilme-self-organizing" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Ad-hoc ağlar önceden yapılandırmaya ihtiyaç duymadan çalışabilir. Düğümler birbirini otomatik olarak keşfeder (neighbor discovery), bağlantı kurar ve gerektiğinde ağ topolojisini yeniden oluşturur. Bu özellik özellikle afet bölgeleri, askeri operasyonlar veya geçici etkinlik alanları gibi dinamik ortamlarda kritik avantaj sağlar.</p>
+<p>Ağ topolojisi değiştikçe, düğümler yönlendirme tablolarını günceller. Bu süreç genellikle protokol tabanlıdır (örneğin AODV, DSR, OLSR).</p>
+
+<h3 class="relative group">3. Dinamik Topoloji (Dynamic Topology)
+    <div id="3-dinamik-topoloji-dynamic-topology" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#3-dinamik-topoloji-dynamic-topology" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Ad-hoc ağların en belirgin özelliklerinden biri topolojinin sürekli değişebilmesidir. Düğümler (araçlar, telefonlar, dronlar) hareket ettikçe bağlantılar kopabilir veya yeni bağlantılar oluşabilir. Bu durum ağın sürekli olarak yeni yollar hesaplamasını gerektirir.</p>
+<p>Bu sebeple dinamik yönlendirme algoritmaları kullanılır. Bu yapı yüksek esneklik sağlar ama aynı zamanda latency ve paket kaybı gibi zorlukları da beraberinde getirir.</p>
+
+<h3 class="relative group">4. Çok Atlama (Multi-Hop) İletişimi
+    <div id="4-çok-atlama-multi-hop-iletişimi" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#4-%c3%a7ok-atlama-multi-hop-ileti%c5%9fimi" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Ad-hoc ağlarda iki düğüm arasındaki doğrudan iletişim her zaman mümkün değildir. Bu durumda veri, arada bulunan diğer düğümler üzerinden çok atlamalı bir şekilde iletilir. Her düğüm, kendisine gelen paketleri hedefe ulaşana kadar yönlendirir.</p>
+<p>Bu mekanizma sayesinde ağ kapsama alanı genişler; örneğin 100 m menzilli düğümler 3 atlamayla 300 m uzaklıktaki hedefe ulaşabilir. Ancak çok atlamalı iletişim enerji tüketimini, gecikmeyi ve paket kaybı riskini artırır.</p>
+
+<h3 class="relative group">5. Enerji Kısıtlılık (Energy Constraints)
+    <div id="5-enerji-kısıtlılık-energy-constraints" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#5-enerji-k%c4%b1s%c4%b1tl%c4%b1l%c4%b1k-energy-constraints" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Özellikle taşınabilir cihazlar (sensörler, araç modülleri, mobil terminaller) pil gücüyle çalıştığı için enerji verimliliği kritik önemdedir. Bu nedenle Ad-hoc ağlarda yönlendirme protokolleri yalnızca en kısa yolu değil, aynı zamanda enerji açısından en uygun yolu da hesaba katabilir. Bu yaklaşım &ldquo;Energy-Aware Routing&rdquo; olarak bilinir.</p>
+
+<h3 class="relative group">6. Kısıtlı Bant Genişliği (Limited Bandwidth)
+    <div id="6-kısıtlı-bant-genişliği-limited-bandwidth" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#6-k%c4%b1s%c4%b1tl%c4%b1-bant-geni%c5%9fli%c4%9fi-limited-bandwidth" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Kablosuz iletişim kanalları, kablolu ağlara göre daha dar bant genişliğine sahiptir. Ayrıca kanalın paylaşılması (CSMA/CA veya TDMA gibi erişim yöntemleriyle) çatışmalara ve paket gecikmelerine neden olabilir.</p>
+<p>Ancak son yıllarda 5G D2D (Device-to-Device) ve 802.11p (VANET standardı) gibi teknolojilerle bu kısıtlar büyük oranda azaltılmıştır.</p>
+
+<h2 class="relative group">Ad-Hoc Networks Ağ Mimarisi
+    <div id="ad-hoc-networks-ağ-mimarisi" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ad-hoc-networks-a%c4%9f-mimarisi" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>Ad-hoc ağlar, önceden kurulmuş bir altyapıya ihtiyaç duymadan, mobil veya sabit cihazların doğrudan birbirleriyle haberleştiği dağıtık yapılı ağlardır. Bu mimaride her cihaz bir terminal (end node) olarak veri üretip tüketir ve aynı zamanda bir yönlendirici (router node) gibi davranarak diğer düğümlerin trafiğini iletir. Yani ağda &ldquo;her düğüm hem kullanıcı hem yönlendiricidir.&rdquo;</p>
+
+<h3 class="relative group">Ağ Mimarisi Türleri
+    <div id="ağ-mimarisi-türleri" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#a%c4%9f-mimarisi-t%c3%bcrleri" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p><strong>Saf (Pure) Ad-Hoc Mimari:</strong></p>
+<ul>
+<li>Hiçbir altyapı yoktur</li>
+<li>Tüm düğümler eşit konumdadır</li>
+<li>Veri yalnızca multi-hop (çok atlamalı) olarak taşınır</li>
+<li>Avantajı: Esneklik, hızlı kurulum, altyapıya bağımlılık yok</li>
+<li>Dezavantajı: Yönlendirme karmaşık, ölçeklenebilirlik sınırlı</li>
+</ul>
+<p><strong>Hibrit (Hybrid) Ad-Hoc Mimari:</strong></p>
+<ul>
+<li>Kısmen altyapı bulunur (erişim noktaları veya sabit istasyonlar)</li>
+<li>Mobil düğümler birbirleriyle doğrudan iletişim kurabilir, ancak gerektiğinde altyapı üzerinden de haberleşir</li>
+<li>VANET, MANET, Mesh Network gibi sistemlerde sıkça görülür</li>
+<li>Avantajı: Daha iyi kapsama alanı ve yönlendirme verimliliği</li>
+</ul>
+
+<h2 class="relative group">Ad-Hoc Networks Türleri
+    <div id="ad-hoc-networks-türleri" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ad-hoc-networks-t%c3%bcrleri" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">MANET (Mobile Ad-hoc Network)
+    <div id="manet-mobile-ad-hoc-network" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#manet-mobile-ad-hoc-network" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>MANET, mobil cihazların statik altyapıdan bağımsız olarak, dinamik topolojiye sahip, kendiliğinden organize olan ağlardır. Bu ağlar, sürekli hareket eden düğümlerle birlikte, yönlendirme protokollerinin yüksek mobiliteyi ve sık topoloji değişikliklerini yönetmesini gerektirir.</p>
+
+<h3 class="relative group">VANET (Vehicular Ad-hoc Network)
+    <div id="vanet-vehicular-ad-hoc-network" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#vanet-vehicular-ad-hoc-network" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>VANET, araçlar arasındaki doğrudan iletişimi sağlayan, yüksek hızda hareket eden ve sık sık bağlantı kopmalarına neden olan ağlardır. Bu ağlar, düşük gecikme süreleri ve güvenilir veri iletimi için, özellikle yönlendirme ve güvenlik protokollerinde optimizasyon gerektirir.</p>
+
+<h3 class="relative group">SANET (Sensor Ad-hoc Network)
+    <div id="sanet-sensor-ad-hoc-network" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#sanet-sensor-ad-hoc-network" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>SANET, dağıtık sensör düğümlerinin birbirleriyle iletişim kurarak çevresel verileri topladığı ve ilettiği ağlardır. Düşük enerji tüketimi ve veri iletimi için verimli protokoller gerektiren bu ağlar, genellikle düşük bant genişliğine sahip, yüksek gecikmeli ve düşük maliyetli ağlardır.</p>
+
+<h3 class="relative group">FANET (Flying Ad-hoc Network)
+    <div id="fanet-flying-ad-hoc-network" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#fanet-flying-ad-hoc-network" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>FANET, insansız hava araçları (İHA) arasındaki ağları ifade eder ve bu ağlar, uçuş esnasında düşük gecikmeli veri iletimi ve yüksek hızda yönlendirme gereksinimlerini karşılamalıdır. FANET, uçuş dinamiklerine bağlı olarak sık sık topoloji değişiklikleri yaşar ve bu da ağın güvenilirliğini artıran özel yönlendirme ve hata toleranslı protokoller gerektirir.</p>
+
+<h2 class="relative group">VANET: Araç Ağlarının Derinlemesine İncelenmesi
+    <div id="vanet-araç-ağlarının-derinlemesine-incelenmesi" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#vanet-ara%c3%a7-a%c4%9flar%c4%b1n%c4%b1n-derinlemesine-incelenmesi" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p><strong>Vehicular Ad-Hoc Network (VANET)</strong>, araçların kendi aralarında ve yol kenarı altyapılarla kablosuz iletişim kurarak kendiliğinden ağlar oluşturduğu, Akıllı Ulaşım Sistemleri&rsquo;nin temel bileşenidir. Her araç hem veri gönderen hem de veri ileten bir düğüm görevi üstlenir.</p>
+<p>VANET&rsquo;in temel özellikleri:</p>
+<ul>
+<li>Merkezi bir yönlendirici, erişim noktası veya baz istasyonu yoktur</li>
+<li>Her düğüm (araç) hem istemci hem yönlendirici görevi görebilir</li>
+<li>Düğümler arası iletişim çok atlamalı olabilir (A → B → C şeklinde)</li>
+</ul>
+
+<h2 class="relative group">VANET Ağ Mimarisi
+    <div id="vanet-ağ-mimarisi" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#vanet-a%c4%9f-mimarisi" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>VANET ekosistemi, farklı iletişim türlerini kapsayan kapsamlı bir mimari üzerine kurulmuştur:</p>
+
+<h3 class="relative group">V2V (Vehicle-to-Vehicle): Araçlar Arası İletişim
+    <div id="v2v-vehicle-to-vehicle-araçlar-arası-iletişim" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#v2v-vehicle-to-vehicle-ara%c3%a7lar-aras%c4%b1-ileti%c5%9fim" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Araçlar arası doğrudan iletişim, VANET&rsquo;in en temel bileşenidir. Araçlar birbirleriyle kablosuz iletişim kurarak hız, konum ve fren durumu gibi bilgileri paylaşır. Çarpışma uyarıları ve acil fren bildirimleri anlık olarak komşu araçlara iletilerek kazalar önlenir.</p>
+<p>IEEE 802.11p/WAVE gibi özel protokoller ve mekanizmalar, bu iletişimin temelini oluşturur.</p>
+
+<h3 class="relative group">V2I (Vehicle-to-Infrastructure): Araçtan Altyapıya İletişim
+    <div id="v2i-vehicle-to-infrastructure-araçtan-altyapıya-iletişim" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#v2i-vehicle-to-infrastructure-ara%c3%a7tan-altyap%c4%b1ya-ileti%c5%9fim" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>V2I, araçlar ile yol kenarı altyapısı arasında bağlantı kurar. Bu iletişim türü, veri alışverişini kolaylaştırmak için yol kenarı üniteleri (RSU) ve trafik yönetim sistemleri ağından yararlanır.</p>
+<p>Trafik ışığı optimizasyonu ve sürücülere gerçek zamanlı bilgi dağıtımı gibi uygulamaları destekleyerek etkin trafik yönetimine önemli katkı sağlar.</p>
+
+<h3 class="relative group">V2P (Vehicle-to-Pedestrian): Araçtan Yayaya İletişim
+    <div id="v2p-vehicle-to-pedestrian-araçtan-yayaya-iletişim" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#v2p-vehicle-to-pedestrian-ara%c3%a7tan-yayaya-ileti%c5%9fim" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Akıllı telefon veya giyilebilir cihazlar aracılığıyla yayaların GPS konum bilgisi ve hareket yönü araçlara kablosuz olarak iletilir. Bluetooth gibi teknolojiler ile yayalar ve araçlar arasında 50-150 metre menzilde iki yönlü iletişim sağlanır.</p>
+<p>Bu sistem özellikle kör noktalardaki, kavşaklardaki veya araç arkasından yola çıkmaya çalışan yayaları tespit ederek sürücüye görsel ve sesli uyarı vererek trafik kazalarını azaltır.</p>
+
+<h3 class="relative group">V2X (Vehicle-to-Everything): Her Şeye Bağlı Araç
+    <div id="v2x-vehicle-to-everything-her-şeye-bağlı-araç" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#v2x-vehicle-to-everything-her-%c5%9feye-ba%c4%9fl%c4%b1-ara%c3%a7" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>V2X, tüm iletişim türlerini kapsayan genel terimdir. V2V, V2I, V2P ve diğer tüm iletişim türlerini kapsayan bütünleşik bir sistemdir. Araçların çevrelerindeki her varlıkla iletişim kurmasını sağlayarak tam bir bağlantılı ulaşım ekosistemi oluşturur.</p>
+
+<h2 class="relative group">VANET Birimleri
+    <div id="vanet-birimleri" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#vanet-birimleri" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>Araç Ad-Hoc Ağlarının kapsamlı incelenmesi kapsamında, araç iletişim sistemlerinin karmaşık yapısını oluşturan temel bileşenleri analiz etmek büyük önem taşır. Bu ekosistemin merkezinde iki kritik unsur yer alır:</p>
+
+<h3 class="relative group">Onboard Unit (OBU): Araç Üstü Birim
+    <div id="onboard-unit-obu-araç-üstü-birim" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#onboard-unit-obu-ara%c3%a7-%c3%bcst%c3%bc-birim" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p><strong>On-Board Unit (OBU)</strong>, araç içi iletişim ve veri işleme görevlerini üstlenen gömülü bir elektronik birimdir. VANET mimarisinin temel bileşenlerinden biri olan OBU, aracın sensörlerinden gelen verileri toplayarak işler ve diğer araçlar (V2V) veya yol kenarı üniteleri (RSU) ile kablosuz iletişim kurar.</p>
+<p><strong>Kullanılan Teknolojiler:</strong></p>
+<ul>
+<li>IEEE 802.11p</li>
+<li>DSRC (Dedicated Short-Range Communications)</li>
+<li>LTE-V</li>
+<li>5G</li>
+</ul>
+<p><strong>Temel Bileşenler:</strong></p>
+<ul>
+<li>İşlemci (SoC veya MCU)</li>
+<li>Bellek</li>
+<li>Kablosuz iletişim modülü</li>
+<li>Güç yönetimi birimi</li>
+</ul>
+<p><strong>OBU&rsquo;nun Temel İşlevleri:</strong></p>
+<ol>
+<li><strong>Veri Toplama:</strong> CAN, LIN veya Ethernet üzerinden araç sensörlerinden gelen verileri okur</li>
+<li><strong>İletişim:</strong> Hücresel ağ (4G/5G), Wi-Fi veya DSRC aracılığıyla bulut sistemleriyle veya diğer araçlarla veri alışverişi yapar</li>
+<li><strong>Konum Takibi:</strong> GPS veya GNSS modülü ile aracın konum bilgisini sürekli olarak sağlar</li>
+<li><strong>Veri İşleme:</strong> Toplanan verileri yerel olarak işler, filtreler veya sıkıştırır</li>
+<li><strong>Güvenlik:</strong> Şifreleme, kimlik doğrulama ve güvenli güncelleme (OTA) mekanizmalarını destekler</li>
+</ol>
+
+<h3 class="relative group">Roadside Unit (RSU): Yol Kenarı Birimi
+    <div id="roadside-unit-rsu-yol-kenarı-birimi" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#roadside-unit-rsu-yol-kenar%c4%b1-birimi" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p><strong>Roadside Unit (RSU)</strong>, genellikle yol kenarlarına, kavşaklara veya otopark gibi stratejik noktalara yerleştirilen sabit iletişim birimleridir. RSU&rsquo;lar, araçlar arası ağ ile (V2V) geniş ağ altyapısı arasında köprü görevi görür ve internet bağlantısı, güvenlik bilgileri ve trafik uyarıları sağlar.</p>
+<p><strong>RSU&rsquo;ların Üç Temel İşlevi:</strong></p>
+<ol>
+<li><strong>Kapsama Alanını Genişletmek:</strong> Uzak araçların da ağa dahil olmasını sağlar</li>
+<li><strong>İnternet Erişimi Sağlamak:</strong> Özellikle doğrudan V2V iletişimin mümkün olmadığı durumlarda</li>
+<li><strong>Güvenlik Uygulamaları:</strong> Düşük köprüler, kazalar veya yol bakım bölgeleri hakkında gerçek zamanlı uyarılar</li>
+</ol>
+<p><strong>RSU Yapısının Avantajları:</strong></p>
+<ul>
+<li>Veri akışı çift yönlüdür; araçlardan gelen bilgiler merkeze iletilir, merkezden gönderilen uyarılar araçlara geri iletilir</li>
+<li>İletişim kapsama alanı genişler; uzak konumdaki araçlar RSU&rsquo;lar üzerinden ağa bağlanabilir</li>
+<li>Gerçek zamanlı trafik yönetimi ve güvenlik uyarıları sağlanabilir</li>
+</ul>
+<p>RSU&rsquo;lar hem gateway hem de relay node olarak çalışarak VANET ekosisteminin omurgasını oluşturur.</p>
+
+<h2 class="relative group">VANET Yönlendirme Protokolleri
+    <div id="vanet-yönlendirme-protokolleri" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#vanet-y%c3%b6nlendirme-protokolleri" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>VANET yapılarında yönlendirme protokolleri, araçlar ile RSU arasındaki veri iletiminin verimli, güvenilir ve düşük gecikmeli şekilde gerçekleşmesi açısından kritik bir rol oynar. Bu protokoller, ağ topolojisinin yüksek oranda dinamik olması, sınırlı bağlantı süresi, yüksek hız farklılıkları ve değişken ağ yoğunluğu gibi zorluklarla başa çıkacak şekilde tasarlanmıştır.</p>
+
+<h3 class="relative group">VANET&rsquo;e Özgü Zorluklar
+    <div id="vanete-özgü-zorluklar" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#vanete-%c3%b6zg%c3%bc-zorluklar" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>VANET&rsquo;ler yüksek mobiliteye, sık topoloji değişimlerine ve yoğun trafik ortamlarına sahip olduğu için klasik MANET (Mobile Ad-Hoc Network) protokolleri genellikle yeterli olmaz. Bu nedenle, VANET&rsquo;e özel yönlendirme protokolleri geliştirilmiştir.</p>
+<p>VANET yönlendirme protokolleri genel olarak işleyiş prensiplerine göre altı ana kategoriye ayrılır. Her kategori, belirli bir iletişim senaryosuna veya gereksinime uygun olarak optimize edilmiştir:</p>
+<ol>
+<li><strong>Topoloji Tabanlı Protokoller:</strong> Proaktif ve reaktif yönlendirme stratejileri</li>
+<li><strong>Pozisyon Tabanlı Protokoller:</strong> GPS konum bilgilerini kullanan protokoller</li>
+<li><strong>Broadcast Tabanlı Protokoller:</strong> Belirli bölgelere mesaj yayını</li>
+<li><strong>Küme Tabanlı Protokoller:</strong> Araçları gruplar halinde organize eden yaklaşımlar</li>
+<li><strong>Geocast Protokoller:</strong> Coğrafi bölgelere özel mesajlaşma</li>
+<li><strong>Hibrit Protokoller:</strong> Birden fazla yaklaşımı birleştiren protokoller</li>
+</ol>
+
+<h2 class="relative group">Sonuç: VANET&rsquo;in Geleceği
+    <div id="sonuç-vanetin-geleceği" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#sonu%c3%a7-vanetin-gelece%c4%9fi" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>Vehicular Ad-Hoc Networks (VANET), akıllı ulaşım sistemlerinin temel taşı olarak ortaya çıkmıştır. Araçlar arası iletişimden altyapı entegrasyonuna, yayalarla etkileşimden her şeye bağlı araç konseptine kadar uzanan geniş bir yelpazede VANET teknolojisi, trafik güvenliğini artırma, trafik akışını optimize etme ve sürücü deneyimini iyileştirme potansiyeline sahiptir.</p>
+<p>5G teknolojisinin yaygınlaşması, edge computing altyapısının gelişmesi ve yapay zeka algoritmalarının olgunlaşmasıyla birlikte VANET&rsquo;in yetenekleri daha da artacaktır. Yakın gelecekte tamamen otonom araçların birbirleriyle kusursuz iletişim kurduğu, trafik kazalarının neredeyse sıfıra indiği ve şehir içi ulaşımın tamamen optimize edildiği bir dünya görebiliriz.</p>
+<p>Bu teknolojinin başarısı, sadece teknik altyapının geliştirilmesine değil, aynı zamanda güvenlik standartlarının belirlenmesine, gizlilik endişelerinin giderilmesine ve küresel bir standardizasyonun sağlanmasına da bağlıdır. VANET, ulaşım sektöründeki dijital dönüşümün merkezinde yer almaya devam edecek ve akıllı şehirlerin vazgeçilmez bir parçası olacaktır.</p>
+<hr>
+<p><em>Bu yazı, modern ulaşım sistemlerinin geleceğini şekillendiren VANET teknolojisinin kapsamlı bir incelemesini sunmaktadır. Araç ağları, IoT (Nesnelerin İnterneti) ve akıllı şehir konseptleriyle birleşerek daha güvenli, verimli ve sürdürülebilir bir ulaşım ekosistemi oluşturmayı hedeflemektedir.</em></p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/tg-blog/posts/vanet/&amp;title="
+          title="LinkedIn&#39;te paylaş"
+          aria-label="LinkedIn&#39;te paylaş">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://twitter.com/intent/tweet/?url=http://localhost:1313/tg-blog/posts/vanet/&amp;text="
+          title="Twitter&#39;da Tweetle"
+          aria-label="Twitter&#39;da Tweetle">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></span>
+        </a>
+      
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://reddit.com/submit/?url=http://localhost:1313/tg-blog/posts/vanet/&amp;resubmit=true&amp;title="
+          title="Reddit&#39;te gönder"
+          aria-label="Reddit&#39;te gönder">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://pinterest.com/pin/create/bookmarklet/?url=http://localhost:1313/tg-blog/posts/vanet/&amp;description="
+          title="Pinterest&#39;te pinle"
+          aria-label="Pinterest&#39;te pinle">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:1313/tg-blog/posts/vanet/&amp;quote="
+          title="Facebook&#39;ta paylaş"
+          aria-label="Facebook&#39;ta paylaş">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="mailto:?body=http://localhost:1313/tg-blog/posts/vanet/&amp;subject="
+          title="Email ile gönder"
+          aria-label="Email ile gönder">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span>
+        </a>
+      
+    
+  </section>
+
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/tg-blog/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/vanet.md"
+          data-oid-likes="likes_posts/vanet.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Yukarı çık"
+    title="Yukarı çık">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+      
+      
+        
+          
+          
+      
+      
+      
+      <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400 ">
+        <ul class="flex list-none flex-col sm:flex-row">
+          
+            <li class=" flex mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0 ">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center"
+                href="https://github.com/tunagrskn"
+                title="">
+                
+                GitHub
+              </a>
+            </li>
+          
+            <li class=" flex mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0 ">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center"
+                href="https://linkedin.com/in/yourprofile"
+                title="">
+                
+                LinkedIn
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a> tarafından desteklenmektedir.
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/tg-blog/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/tg-blog/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Ara"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Kapat (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

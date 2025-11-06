@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tuna Girişken - Embedded Systems Blog</title>
-    <link>http://localhost:1313/tg-blog/</link>
-    <description>Recent content on Tuna Girişken - Embedded Systems Blog</description>
+    <title>Posts on Tuna Girişken - Embedded Systems Blog</title>
+    <link>http://localhost:1313/tg-blog/posts/</link>
+    <description>Recent content in Posts on Tuna Girişken - Embedded Systems Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <copyright>© 2025 </copyright>
-    <atom:link href="http://localhost:1313/tg-blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tg-blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title></title>
@@ -25,29 +25,6 @@
     
 &lt;/h1&gt;
 &lt;p&gt;Modern ulaşım sistemleri hızla dijitalleşiyor ve araçlar artık sadece birer taşıt değil, aynı zamanda birbirleriyle ve çevreleriyle sürekli iletişim halinde olan akıllı cihazlar haline geliyor. Bu dönüşümün merkezinde &lt;strong&gt;Vehicular Ad-Hoc Networks (VANET)&lt;/strong&gt; teknolojisi yer alıyor. Peki VANET nedir ve neden bu kadar önemli? Bu yazıda, VANET&amp;rsquo;in temellerinden uygulamalarına kadar her şeyi detaylıca inceleyeceğiz.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Hakkımda</title>
-      <link>http://localhost:1313/tg-blog/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/tg-blog/about/</guid>
-      <description>&lt;h2 class=&#34;relative group&#34;&gt;Merhaba! 👋
-    &lt;div id=&#34;merhaba-&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
-    
-    &lt;span
-        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;
-        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#merhaba-&#34; aria-label=&#34;&#34;&gt;#&lt;/a&gt;
-    &lt;/span&gt;
-    
-&lt;/h2&gt;
-&lt;p&gt;Ben &lt;strong&gt;Tuna Girişken&lt;/strong&gt;, &lt;a
-  href=&#34;https://karluna.com&#34;
-    target=&#34;_blank&#34;
-  &gt;Karluna Engineering&lt;/a&gt;&amp;lsquo;de &lt;strong&gt;Embedded Linux Development Engineer&lt;/strong&gt; olarak çalışıyorum.&lt;/p&gt;
-&lt;p&gt;Savunma ve otomotiv endüstrileri için &lt;strong&gt;safety-critical sistemler&lt;/strong&gt; geliştirme konusunda 4+ yıllık deneyime sahibim. Özellikle &lt;strong&gt;bare-metal&lt;/strong&gt;, &lt;strong&gt;RTOS&lt;/strong&gt; ve &lt;strong&gt;Yocto Linux&lt;/strong&gt; üzerinde uzmanlaşmış durumdayım.&lt;/p&gt;</description>
       
     </item>
     

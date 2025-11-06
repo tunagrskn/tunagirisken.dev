@@ -1,22 +1,22 @@
 languageCode = "tr"
 languageName = "Türkçe"
 weight = 1
-title = "Zengard - Embedded Systems Blog"
+title = "Tuna Girişken - Embedded Systems Blog"
 
 [params]
   displayName = "TR"
   isoCode = "tr"
   rtl = false
   dateFormat = "2 January 2006"
-  description = "Embedded Linux, Yocto, ARM Cortex ve gerçek zamanlı sistemler üzerine teknik yazılar"
+  description = "Embedded Linux, Yocto, safety-critical systems ve real-time automotive solutions"
   
 [author]
-  name = "Zengard"
+  name = "Tuna Girişken"
   image = "img/avatar.jpg"
   headline = "Embedded Software Engineer @ Karluna Engineering"
-  bio = "4+ yıllık deneyim | ARM Cortex-M/A | Yocto Linux | CAN/J1939 | Real-Time Systems"
+  bio = "4+ years architecting safety-critical systems | Arm Cortex | Yocto Linux | DO-178C | CAN/J1939"
   links = [
+    { email = "mailto:tunagrskn@gmail.com" },
     { github = "https://github.com/tunagrskn" },
-    { linkedin = "https://linkedin.com/in/yourprofile" },
-    { email = "mailto:your@email.com" }
+    { linkedin = "https://www.linkedin.com/in/tunagrskn" }
   ]
