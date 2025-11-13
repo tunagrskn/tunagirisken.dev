@@ -1,20 +1,21 @@
+# Ana Menü
 [[main]]
-  name = "📝 Yazılar"
+  name = "Yazılar"
   pageRef = "posts"
   weight = 10
 
 [[main]]
-  name = "🏷️ Etiketler"
+  name = "Etiketler"
   pageRef = "tags"
   weight = 20
 
 [[main]]
-  name = "📂 Kategoriler"
+  name = "Kategoriler"
   pageRef = "categories"
   weight = 30
 
 [[main]]
-  name = "👤 Hakkımda"
+  name = "Hakkımda"
   pageRef = "about"
   weight = 40
 
@@ -25,6 +26,10 @@
 
 [[footer]]
   name = "LinkedIn"
-  url = "https://linkedin.com/in/yourprofile"
+  url = "https://linkedin.com/in/tunagrskn"
   weight = 20
 
+[[footer]]
+  name = "Email"
+  url = "mailto:tunagirisken@outlook.com"
+  weight = 30

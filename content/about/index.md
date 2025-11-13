@@ -1,132 +1,107 @@
----
-title: "Hakkımda"
-description: "Tuna Girişken - Embedded Software Engineer"
-showTableOfContents: false
-showReadingTime: false
-showDate: false
-showWordCount: false
----
++++
+title = "Hakkımda"
+date = 2025-11-13
+layout = "simple"
++++
 
-## Merhaba! 👋
+{{< lead >}}
+**TODO**
+{{< /lead >}}
 
-Ben **Tuna Girişken**, [Karluna Engineering](https://karluna.com)'de **Embedded Linux Development Engineer** olarak çalışıyorum.
-
-Savunma ve otomotiv endüstrileri için **safety-critical sistemler** geliştirme konusunda 4+ yıllık deneyime sahibim. Özellikle **bare-metal**, **RTOS** ve **Yocto Linux** üzerinde uzmanlaşmış durumdayım.
-
-## 🎯 Uzmanlık Alanlarım
-
-### Embedded Sistemler
-- **Bare-metal & RTOS**: FreeRTOS, Zephyr
-- **Yocto Linux**: Custom distributions, BSP development
-- **Bootloader Development**: U-Boot, SPL, Secure Boot
-- **Device Drivers**: Kernel modules, peripheral drivers
-
-### Mikroişlemci Platformları
-- **ARM Cortex**: R5, M4, M33, A53, A55
-- **PowerPC**: P4080DS
-- **x86**: Xeon D-1700
-
-### Programlama & Araçlar
-- **Languages**: C, C++98/11/14/17/20, Assembly (Arm/PowerPC), Bash, QML
-- **Build Systems**: CMake, Meson, Yocto/BitBake
-- **Tools**: GCC, Clang, LLVM, Git, QEMU, OpenSSL, Qt
-
-### Haberleşme Protokolleri
-- CAN/J1939, MQTT, TCP/UDP
-- UART, SPI, I2C, USB, RS232
-- MIL-STD-1553
-
-### Standartlar
-- **DO-178C** (Avionics Software)
-- **ISO 26262** (Automotive Functional Safety)
-- **MIL-STD-1553** (Military Standards)
-
-## 💼 Profesyonel Deneyim
-
-### Karluna Engineering (Aralık 2024 - Günümüz)
-**Embedded Linux Development Engineer**
-
-- **SAE J1939 Protocol Stack**: Modüler C++20 framework ile 250+ PGN desteği, sub-millisecond latency
-- **NXP i.MX93 Platform**: Custom Yocto-based Linux distribution, %35 boot time optimizasyonu
-- **Real-time Automotive Telemetry**: CAN bus integration
-
-### Baykar Technologies (Aralık 2022 - Kasım 2024)
-**Embedded Linux Development Engineer**
-
-- **Safety-Critical RTOS Framework**: Multi-core Arm Cortex platformları için DO-178C uyumlu sistem
-- **Cryptographic Modules**: AES-256 ve RSA implementasyonu, HSM entegrasyonu, secure boot
-- **Bare-metal Applications**: Cortex-R5 ve Cortex-M4 için inter-core communication
-- **Avionics GUI**: Qt/QML tabanlı mission-critical interface, production UAV sistemlerinde kullanımda
-
-### TÜBİTAK SAGE (Şubat 2022 - Mayıs 2022)
-**Embedded Software Engineer Intern**
-
-- Taktik seyir füze sistemleri için bootloader entegrasyonu
-- Secure boot chain ve firmware update mekanizmaları
-- MIL-STD-1553 standartlarına uygun embedded Linux projeleri
-
-## 🚀 Öne Çıkan Projeler
-
-### NXP P4080DS Custom Linux Distribution
-**Yocto-based BSP + NVMe PCIe Driver**
-
-- Production-ready Yocto BSP, custom meta-layers
-- NVMe PCIe driver with DMA support
-- **2.8 GB/s throughput**, %40 latency reduction
-
-**Teknolojiler**: Yocto, PowerPC, U-Boot, PCIe, DMA
-
-### TI Sitara AM65x SBL Development
-**OSPI Flash-based Bootloader**
-
-- Secondary Boot Loader (SBL) with memory-mapped XIP
-- **<2 second boot time**
-- UART, GPIO, Watchdog drivers
-- Secure boot chain for safety-critical applications
-
-**Teknolojiler**: Bare-metal, OSPI, Secure Boot
-
-### Karlos J1939 Telemetry System
-**Real-time Automotive Data Acquisition**
-
-- Modular C++20 framework
-- 250+ Parameter Group Numbers (PGN)
-- MQTT integration
-- Sub-millisecond latency
-
-**Teknolojiler**: C++20, CAN/J1939, MQTT, Linux
-
-## 🎓 Eğitim
-
-**Yüksek Lisans** - Bilgisayar Mühendisliği  
-Ege Üniversitesi (2025 - Devam Ediyor)
-
-**Lisans** - Elektrik-Elektronik Mühendisliği  
-Hasan Kalyoncu Üniversitesi (2017 - 2022)  
-*%100 İngilizce Burslu - Graduation Project: RF controlled motor driver software*
-
-## 📫 İletişim
-
-- **Email**: [tunagrskn@gmail.com](mailto:tunagrskn@gmail.com)
-- **GitHub**: [github.com/tunagrskn](https://github.com/tunagrskn)
-- **LinkedIn**: [linkedin.com/in/tunagrskn](https://www.linkedin.com/in/tunagrskn)
-- **Telefon**: +90 533 646 0969
-
-## 🌐 Dil Becerileri
-
-- **Türkçe**: Ana dil
-- **İngilizce**: Profesyonel seviye (B2)
-
-## 💭 İlgi Alanları
-
-Teknik çalışmalarımın dışında:
-- 📈 Kripto para piyasaları ve borsa analizleri
-- 🎮 Retro gaming ve emulation
-- 🎸 Müzik teknolojileri
-- 📖 Bilim kurgu edebiyatı
+{{< button href="Tuna_Girisken_En_Cv.pdf" target="_blank" >}}
+📄 CV
+{{< /button >}}
 
 ---
 
-*Bu blog, embedded sistemler, Linux kernel development, safety-critical software ve automotive protocols üzerine teknik yazılarımı ve deneyimlerimi paylaştığım kişisel platformumdur.*
+## Özet
 
-**Son Güncelleme**: Kasım 2024
+Karluna Engineering'de **Embedded Software Engineer** olarak çalışan, ARM Cortex işlemciler, PowerPC platformları, CAN/J1939 protokolleri ve NXP i.MX93 platformları için Yocto tabanlı Linux dağıtımları konusunda uzmanlaşmış bir yazılım mühendisiyim. Şu anda otomotiv uygulamaları için **Karlos embedded Linu x telemetri sistemi** geliştiriyorum.
+
+---
+
+## Deneyim
+
+{{< timeline >}}
+{{< timelineItem icon="book" header="Automotive Embedded Software Engineer" badge="2022 - Günümüz" subheader="Karluna Engineering" >}}
+
+- **Karlos Telemetri Sistemi**: C++20 J1939 framework geliştirme ve özel Linux dağıtımları
+
+- **i.MX93 Platform**: 3-5 saniye boot süresi optimizasyonları
+- **GNSS Entegrasyonu**: EC200U LTE modül ile NMEA sentence parsing
+- **Error Handling**: Result<T> pattern ile modern C++ error management sistemi
+{{< /timelineItem >}}
+
+{{< timelineItem icon="shield" header="Embedded Linux Development Engineer" badge="2021 - 2022" subheader="Baykar Technologies" >}}
+- **DO-178C Uyumlu Yazılım**: Safety-critical aviyonik sistemler
+- **Real-Time Sistemler**: FreeRTOS ve hard real-time uygulamalar
+- **Güvenlik**: HSM entegrasyonu ve secure boot süreçleri
+{{< /timelineItem >}}
+
+{{< timelineItem icon="shield" header="Embedded Systems Engineer" badge="2020 - 2021" subheader="TÜBİTAK SAGE" >}}
+- **Savunma Sistemleri**: PowerPC tabanlı kritik görev sistemleri
+- **ISO 26262**: Otomotiv güvenlik standartlarına uygun geliştirme
+- **Kriptografi**: Embedded sistemlerde güvenli haberleşme protokolleri
+{{< /timelineItem >}}
+{{< /timeline >}}
+
+---
+
+## Teknik Beceriler
+
+### Embedded Platformlar
+
+{{< badge >}}ARM Cortex-M/A{{< /badge >}}
+{{< badge >}}PowerPC{{< /badge >}}
+{{< badge >}}NXP i.MX93{{< /badge >}}
+{{< badge >}}STM32{{< /badge >}}
+
+### İşletim Sistemleri & RTOS
+
+{{< badge >}}Yocto Linux{{< /badge >}}
+{{< badge >}}FreeRTOS{{< /badge >}}
+{{< badge >}}Linux RT{{< /badge >}}
+{{< badge >}}Bare-Metal{{< /badge >}}
+
+### Protokoller & Araçlar
+
+{{< badge >}}CAN/J1939{{< /badge >}}
+{{< badge >}}MQTT{{< /badge >}}
+{{< badge >}}I2C/SPI/UART{{< /badge >}}
+{{< badge >}}Git{{< /badge >}}
+
+### Programlama Dilleri
+
+{{< badge >}}C/C++20{{< /badge >}}
+{{< badge >}}Python{{< /badge >}}
+{{< badge >}}Bash{{< /badge >}}
+{{< badge >}}Rust (öğreniyorum){{< /badge >}}
+
+---
+
+### Education
+
+{{< timeline >}}
+{{< timelineItem icon="book" header="Master of Science in Computer Engineering" badge="2025 - Current" subheader="<a href='https://ege.edu.tr'>Ege University</a>" >}}
+{{< /timelineItem >}}
+
+{{< timelineItem icon="shield" header="Bachelor of Engineering in Electrical and Electronics Engineering" badge="2017 - 2022" subheader="[Hasan Kalyoncu University](https://hku.edu.tr)" >}}
+Graduation Project: RF controlled motor driver software
+{{< /timelineItem >}}
+{{< /timeline >}}
+
+---
+
+## İletişim
+
+{{< button href="https://github.com/tunagrskn" target="_blank" >}}
+{{< icon "github" >}} GitHub
+{{< /button >}}
+
+{{< button href="https://linkedin.com/in/tunagrskn" target="_blank" >}}
+{{< icon "linkedin" >}} LinkedIn  
+{{< /button >}}
+
+{{< button href="mailto:tunagirisken@outlook.com" >}}
+{{< icon "email" >}} Email
+{{< /button >}}
