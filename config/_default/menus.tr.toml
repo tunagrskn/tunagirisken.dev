@@ -1,0 +1,30 @@
+[[main]]
+  name = "📝 Yazılar"
+  pageRef = "posts"
+  weight = 10
+
+[[main]]
+  name = "🏷️ Etiketler"
+  pageRef = "tags"
+  weight = 20
+
+[[main]]
+  name = "📂 Kategoriler"
+  pageRef = "categories"
+  weight = 30
+
+[[main]]
+  name = "👤 Hakkımda"
+  pageRef = "about"
+  weight = 40
+
+[[footer]]
+  name = "GitHub"
+  url = "https://github.com/tunagrskn"
+  weight = 10
+
+[[footer]]
+  name = "LinkedIn"
+  url = "https://linkedin.com/in/yourprofile"
+  weight = 20
+

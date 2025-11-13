@@ -1,0 +1,22 @@
+languageCode = "tr"
+languageName = "Türkçe"
+weight = 1
+title = "Tuna Girişken"
+
+[params]
+  displayName = "TR"
+  isoCode = "tr"
+  rtl = false
+  dateFormat = "2 January 2006"
+  description = "Embedded Linux, Yocto, safety-critical systems ve real-time automotive solutions"
+  
+[author]
+  name = "Tuna Girişken"
+  image = "img/avatar.jpg"
+  headline = "Embedded Software Engineer @ Karluna Engineering"
+  bio = "4+ years architecting safety-critical systems | Arm Cortex | Yocto Linux | DO-178C | CAN/J1939"
+  links = [
+    { email = "mailto:tunagirisken@outlook.com" },
+    { github = "https://github.com/tunagrskn" },
+    { linkedin = "https://www.linkedin.com/in/tunagrskn" }
+  ]

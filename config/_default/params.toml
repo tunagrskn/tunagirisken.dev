@@ -1,0 +1,110 @@
+colorScheme = "slate"
+defaultAppearance = "dark"
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = true
+mainSections = ["posts"]
+robots = ""
+
+[header]
+  layout = "fixed"
+
+[homepage]
+  layout = "profile"
+  homepageImage = "img/home.jpg"
+  showRecent = true
+  showRecentItems = 6
+  showMoreLink = true
+  showMoreLinkDest = "/posts"
+  cardView = true
+  cardViewScreenWidth = false
+  layoutBackgroundBlur = true
+  
+[article]
+  showDate = true
+  showViews = false
+  showLikes = false
+  showDateUpdated = false
+  showAuthor = true
+  showHero = true
+  heroStyle = "background"
+  layoutBackgroundBlur = true
+  layoutBackgroundHeaderSpace = true
+  showBreadcrumbs = false
+  showDraftLabel = true
+  showEdit = false
+  editURL = "https://github.com/tunagrskn/tg-blog/tree/main/content"
+  editAppendPath = true
+  seriesOpened = false
+  showHeadingAnchors = true
+  showPagination = true
+  invertPagination = false
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showAuthorsBadges = false
+  showWordCount = true
+  showSummary = true
+  sharingLinks = ["linkedin", "twitter", "reddit", "pinterest", "facebook", "email"]
+  showComments = false
+  
+[list]
+  showHero = true
+  heroStyle = "background"
+  layoutBackgroundBlur = true
+  layoutBackgroundHeaderSpace = true
+  showBreadcrumbs = false
+  showSummary = true
+  showViews = false
+  showLikes = false
+  showTableOfContents = false
+  showCards = true
+  groupByYear = true
+  cardView = true
+  cardViewScreenWidth = false
+  constrainItemsWidth = false
+  
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  
+[taxonomy]
+  showTermCount = true
+  showHero = true
+  heroStyle = "background"
+  showBreadcrumbs = false
+  showViews = false
+  showLikes = false
+  showTableOfContents = false
+  cardView = true
+  
+[term]
+  showHero = true
+  heroStyle = "background"
+  showBreadcrumbs = false
+  showViews = false
+  showLikes = false
+  showTableOfContents = true
+  groupByYear = false
+  cardView = true
+  cardViewScreenWidth = false
+  
+[firebase]
+  apiKey = ""
+  authDomain = ""
+  projectId = ""
+  storageBucket = ""
+  messagingSenderId = ""
+  appId = ""
+  measurementId = ""
+
+[fathomAnalytics]
+  site = ""
+  domain = ""
+
+[verification]
+  google = ""
+  bing = ""
+  pinterest = ""
+  yandex = ""
