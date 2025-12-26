@@ -1,48 +1,48 @@
-languageCode = "tr"
-languageName = "Türkçe"
-weight = 2
+languageCode = "en"
+languageName = "English"
+weight = 1
 title = "Tuna Girişken"
 
 [params]
-  displayName = "TR"
-  isoCode = "tr"
+  displayName = "EN"
+  isoCode = "en"
   rtl = false
-  dateFormat = "2 January 2006"
-  description = "Embedded Linux, Yocto, güvenlik-kritik sistemler ve gerçek zamanlı otomotiv çözümleri"
+  dateFormat = "January 2, 2006"
+  description = "Embedded Linux, Yocto, safety-critical systems and real-time automotive solutions"
   
 [author]
   name = "Tuna Girişken"
   image = "img/avatar.jpg"
-  headline = "Gömülü Yazılım Mühendisi @ Karluna Engineering"
-  bio = "4+ yıllık güvenlik-kritik sistem mimarisi deneyimi | ARM Cortex | Yocto Linux | DO-178C | CAN/J1939"
+  headline = "Embedded Software Engineer @ Karluna Engineering"
+  bio = "4+ years architecting safety-critical systems | ARM Cortex | Yocto Linux | DO-178C | CAN/J1939"
   links = [
     { email = "mailto:tunagirisken@outlook.com" },
     { github = "https://github.com/tunagrskn" },
     { linkedin = "https://www.linkedin.com/in/tunagrskn" }
   ]
 
-# Ana Menü
+# Main Menu
 [[menus.main]]
-  name = "Yazılar"
+  name = "Posts"
   pageRef = "posts"
   weight = 10
 
 [[menus.main]]
-  name = "Etiketler"
+  name = "Tags"
   pageRef = "tags"
   weight = 20
 
 [[menus.main]]
-  name = "Kategoriler"
+  name = "Categories"
   pageRef = "categories"
   weight = 30
 
 [[menus.main]]
-  name = "Hakkımda"
+  name = "About"
   pageRef = "about"
   weight = 40
 
-# Footer Menüsü
+# Footer Menu
 [[menus.footer]]
   name = "GitHub"
   url = "https://github.com/tunagrskn"
@@ -54,6 +54,6 @@ title = "Tuna Girişken"
   weight = 20
 
 [[menus.footer]]
-  name = "E-posta"
+  name = "Email"
   url = "mailto:tunagirisken@outlook.com"
   weight = 30
