@@ -1,0 +1,5 @@
+{{- /* Glowing Text Shortcode */ -}}
+{{- /* Usage: {{< glow-text >}}Important Text{{< /glow-text >}} */ -}}
+<span class="glow-text" style="font-size: 1.1em; font-weight: 600;">
+  {{ .Inner | markdownify }}
+</span>

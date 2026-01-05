@@ -1,0 +1,28 @@
+{{- /* Animated Counter Shortcode */ -}}
+{{- /* Usage: {{< counter number="4" suffix="+" text="Years Experience" >}} */ -}}
+<div class="counter-item" style="text-align: center; padding: 2rem; animation: bounceIn 1s ease-out;">
+  <div class="counter-number gradient-text" style="font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;">
+    <span class="count" data-target="{{ .Get "number" }}">0</span>{{ .Get "suffix" }}
+  </div>
+  <div style="font-size: 1rem; opacity: 0.8;">{{ .Get "text" }}</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const counters = document.querySelectorAll('.count');
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        counter.textContent = target;
+        clearInterval(timer);
+      } else {
+        counter.textContent = Math.floor(current);
+      }
+    }, 30);
+  });
+});
+</script>

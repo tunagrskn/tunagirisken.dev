@@ -1,0 +1,10 @@
+{{- /* Glass Card Shortcode */ -}}
+{{- /* Usage: {{< glass-card title="Title" >}}Content{{< /glass-card >}} */ -}}
+<div class="glass-effect" style="padding: 2rem; margin: 2rem 0; animation: fadeInUp 0.8s ease-out;">
+  {{ if .Get "title" }}
+  <h3 class="gradient-text" style="margin-bottom: 1rem;">{{ .Get "title" }}</h3>
+  {{ end }}
+  <div>
+    {{ .Inner | markdownify }}
+  </div>
+</div>

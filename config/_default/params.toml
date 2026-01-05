@@ -19,7 +19,8 @@ robots = ""
   showMoreLinkDest = "/posts"
   cardView = true
   cardViewScreenWidth = false
-  layoutBackgroundBlur = true
+  layoutBackgroundBlur = false
+  layoutBackgroundHeaderSpace = true
   
 [article]
   showDate = true

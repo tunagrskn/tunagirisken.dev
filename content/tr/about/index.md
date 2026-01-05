@@ -1,11 +1,11 @@
-+++
-title = "Hakkımda"
-date = 2025-11-13
-layout = "simple"
-+++
+---
+title: "Hakkımda"
+date: 2025-01-05
+layout: "simple"
+---
 
 {{< lead >}}
-**TODO**
+Karluna Engineering'de **Embedded Software Engineer** olarak çalışıyorum. ARM Cortex işlemciler, PowerPC platformları, CAN/J1939 protokolleri ve Yocto tabanlı Linux dağıtımları konusunda uzmanlaşmış bir yazılım mühendisiyim.
 {{< /lead >}}
 
 {{< button href="Tuna_Girisken_En_Cv.pdf" target="_blank" >}}
@@ -16,7 +16,7 @@ layout = "simple"
 
 ## Özet
 
-Karluna Engineering'de **Embedded Software Engineer** olarak çalışan, ARM Cortex işlemciler, PowerPC platformları, CAN/J1939 protokolleri ve NXP i.MX93 platformları için Yocto tabanlı Linux dağıtımları konusunda uzmanlaşmış bir yazılım mühendisiyim. Şu anda otomotiv uygulamaları için **Karlos embedded Linu x telemetri sistemi** geliştiriyorum.
+Karluna Engineering'de **Embedded Software Engineer** olarak çalışan, ARM Cortex işlemciler, PowerPC platformları, CAN/J1939 protokolleri ve NXP i.MX93 platformları için Yocto tabanlı Linux dağıtımları konusunda uzmanlaşmış bir yazılım mühendisiyim. Şu anda otomotiv uygulamaları için **Karlos embedded Linux telemetri sistemi** geliştiriyorum.
 
 ---
 
@@ -26,7 +26,6 @@ Karluna Engineering'de **Embedded Software Engineer** olarak çalışan, ARM Cor
 {{< timelineItem icon="book" header="Automotive Embedded Software Engineer" badge="2022 - Günümüz" subheader="Karluna Engineering" >}}
 
 - **Karlos Telemetri Sistemi**: C++20 J1939 framework geliştirme ve özel Linux dağıtımları
-
 - **i.MX93 Platform**: 3-5 saniye boot süresi optimizasyonları
 - **GNSS Entegrasyonu**: EC200U LTE modül ile NMEA sentence parsing
 - **Error Handling**: Result<T> pattern ile modern C++ error management sistemi
@@ -79,14 +78,14 @@ Karluna Engineering'de **Embedded Software Engineer** olarak çalışan, ARM Cor
 
 ---
 
-### Education
+## Eğitim
 
 {{< timeline >}}
-{{< timelineItem icon="book" header="Master of Science in Computer Engineering" badge="2025 - Current" subheader="<a href='https://ege.edu.tr'>Ege University</a>" >}}
+{{< timelineItem icon="book" header="Yüksek Lisans - Bilgisayar Mühendisliği" badge="2025 - Devam Ediyor" subheader="Ege Üniversitesi" >}}
 {{< /timelineItem >}}
 
-{{< timelineItem icon="shield" header="Bachelor of Engineering in Electrical and Electronics Engineering" badge="2017 - 2022" subheader="[Hasan Kalyoncu University](https://hku.edu.tr)" >}}
-Graduation Project: RF controlled motor driver software
+{{< timelineItem icon="shield" header="Lisans - Elektrik-Elektronik Mühendisliği" badge="2017 - 2022" subheader="Hasan Kalyoncu Üniversitesi" >}}
+Bitirme Projesi: RF kontrollü motor sürücü yazılımı
 {{< /timelineItem >}}
 {{< /timeline >}}
 

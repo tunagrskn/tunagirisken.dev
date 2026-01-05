@@ -1,0 +1,60 @@
+<!-- Minimal Animations (Soft & Clean) -->
+<div class="particles" id="particles-js" style="display: none;"></div>
+
+<!-- Scroll to Top Button -->
+<div class="fab" onclick="scrollToTop()" title="Scroll to top" style="display: none;">
+  <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+  </svg>
+</div>
+
+<script>
+// Smooth Scroll to Top
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Scroll Reveal Animation (Gentle)
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.scroll-reveal').forEach(el => {
+  observer.observe(el);
+});
+
+// Add scroll-reveal class to elements
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = document.querySelectorAll('article, section');
+  elements.forEach((el, index) => {
+    if (!el.classList.contains('scroll-reveal')) {
+      el.classList.add('scroll-reveal');
+      el.style.transitionDelay = (index * 0.05) + 's';
+    }
+  });
+});
+
+// Show/Hide Scroll to Top button
+window.addEventListener('scroll', () => {
+  const fab = document.querySelector('.fab');
+  if (!fab) return;
+  
+  if (window.pageYOffset > 500) {
+    fab.style.display = 'flex';
+  } else {
+    fab.style.display = 'none';
+  }
+});
+</script>

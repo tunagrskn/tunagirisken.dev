@@ -1,21 +1,21 @@
 baseURL = "https://tunagrskn.github.io/tg-blog/"
 theme = "blowfish"
 
-defaultContentLanguage = "en"
+defaultContentLanguage = "tr"
 defaultContentLanguageInSubdir = true
 
 enableRobotsTXT = true
 summaryLength = 30
 
 [languages]
-  [languages.en]
-    languageCode = "en"
-    languageName = "English"
-    weight = 1
-    
   [languages.tr]
     languageCode = "tr"
     languageName = "Türkçe"
+    weight = 1
+    
+  [languages.en]
+    languageCode = "en"
+    languageName = "English"
     weight = 2
 
 [pagination]
