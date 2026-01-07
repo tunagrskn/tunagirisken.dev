@@ -3,4 +3,135 @@
 .hero-circles {
   display: none; /* Disabled for minimal look */
 }
+
+/* ANIMATED SKILL BANNER - İnce Şerit Tasarım */
+.skill-banner-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+  padding: 1rem 0;
+  margin: 3rem 0 0 0;
+  position: relative;
+  border-top: 1px solid rgba(102, 126, 234, 0.2);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.skill-banner-wrapper::before,
+.skill-banner-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.skill-banner-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.skill-banner-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.dark .skill-banner-wrapper {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-top: 1px solid rgba(102, 126, 234, 0.3);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.dark .skill-banner-wrapper::before {
+  background: linear-gradient(to right, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 100%);
+}
+
+.dark .skill-banner-wrapper::after {
+  background: linear-gradient(to left, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 100%);
+}
+
+.skill-banner {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.skill-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: fit-content;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.dark .skill-item {
+  background: rgba(31, 41, 55, 0.7);
+  border-color: rgba(102, 126, 234, 0.25);
+}
+
+.skill-item:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.4);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.dark .skill-item:hover {
+  background: rgba(31, 41, 55, 0.95);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.skill-item img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: grayscale(0%);
+}
+
+.skill-item:hover img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 2px 4px rgba(102, 126, 234, 0.3));
+}
+
+.skill-item span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #374151;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.dark .skill-item span {
+  color: #e5e7eb;
+}
+
+.skill-item:hover span {
+  color: #667eea;
+}
 </style>

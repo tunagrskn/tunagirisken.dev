@@ -46,38 +46,6 @@ Karluna Engineering'de **Embedded Software Engineer** olarak çalışan, ARM Cor
 
 ---
 
-## Teknik Beceriler
-
-### Embedded Platformlar
-
-{{< badge >}}ARM Cortex-M/A{{< /badge >}}
-{{< badge >}}PowerPC{{< /badge >}}
-{{< badge >}}NXP i.MX93{{< /badge >}}
-{{< badge >}}STM32{{< /badge >}}
-
-### İşletim Sistemleri & RTOS
-
-{{< badge >}}Yocto Linux{{< /badge >}}
-{{< badge >}}FreeRTOS{{< /badge >}}
-{{< badge >}}Linux RT{{< /badge >}}
-{{< badge >}}Bare-Metal{{< /badge >}}
-
-### Protokoller & Araçlar
-
-{{< badge >}}CAN/J1939{{< /badge >}}
-{{< badge >}}MQTT{{< /badge >}}
-{{< badge >}}I2C/SPI/UART{{< /badge >}}
-{{< badge >}}Git{{< /badge >}}
-
-### Programlama Dilleri
-
-{{< badge >}}C/C++20{{< /badge >}}
-{{< badge >}}Python{{< /badge >}}
-{{< badge >}}Bash{{< /badge >}}
-{{< badge >}}Rust (öğreniyorum){{< /badge >}}
-
----
-
 ## Eğitim
 
 {{< timeline >}}
@@ -104,3 +72,7 @@ Bitirme Projesi: RF kontrollü motor sürücü yazılımı
 {{< button href="mailto:tunagirisken@outlook.com" >}}
 {{< icon "email" >}} Email
 {{< /button >}}
+
+---
+
+{{< skill-banner >}}
