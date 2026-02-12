@@ -1,0 +1,8 @@
+RewriteEngine On
+
+#RewriteCond %{REMOTE_ADDR} !^78\.189\.95\.168$
+#RewriteCond %{REQUEST_URI} !^/maintenance\.html$
+#RewriteRule ^(.*)$ /maintenance.html [R=503,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

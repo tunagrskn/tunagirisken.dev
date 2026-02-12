@@ -21,7 +21,6 @@ title = "Tuna Girişken"
     { linkedin = "https://www.linkedin.com/in/tunagrskn" }
   ]
 
-# Ana Menü
 [[menus.main]]
   name = "Yazılar"
   pageRef = "posts"

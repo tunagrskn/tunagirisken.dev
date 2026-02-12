@@ -1,4 +1,4 @@
-baseURL = "https://tunagrskn.github.io/tg-blog/"
+baseURL = "https://tunagirisken.com/"
 theme = "blowfish"
 
 defaultContentLanguage = "tr"
@@ -27,3 +27,8 @@ summaryLength = 30
 [sitemap]
   changefreq = "weekly"
   priority = 0.5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
