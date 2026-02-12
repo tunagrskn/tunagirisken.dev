@@ -36,8 +36,8 @@ body::before {
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
@@ -87,26 +87,39 @@ article.card::before {
   background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
   opacity: 0;
   transition: opacity 0.4s ease;
-  z-index: -1; (Minimal)
-   ============================================ */
-article.card, .card {
-  position: relative;
-  transition: all 0.3s ease;
-  border-radius: 12px;
-  overflow: hidden;
+  z-index: -1;
 }
 
 article.card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1)all 0.3s ease;
-}(Subtle) */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+
 .glass-effect {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   BUTTON ANIMATIONS
+   ============================================ */
+.button, button, a.button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.button::before, button::before, a.button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
   height: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
@@ -138,7 +151,7 @@ article.card:hover {
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50%       { transform: scale(1.05); }
 }
 
 .gradient-button:hover {
@@ -150,7 +163,7 @@ article.card:hover {
 /* ============================================
    NAVIGATION ANIMATIONS
    ============================================ */
-nav, header {
+/* nav, header {
   animation: slideDown 0.5s ease-out;
 }
 
@@ -165,7 +178,6 @@ nav, header {
   }
 }
 
-/* Menu Items Hover */
 nav a, .menu-item {
   position: relative;
   transition: all 0.3s ease;
@@ -184,7 +196,7 @@ nav a::after, .menu-item::after {
 
 nav a:hover::after, .menu-item:hover::after {
   width: 100%;
-}
+} */
 
 /* ============================================
    BADGE ANIMATIONS (Minimal)
@@ -202,7 +214,7 @@ nav a:hover::after, .menu-item:hover::after {
 /* ============================================
    TIMELINE ANIMATIONS
    ============================================ */
-.timeline-item {
+ .timeline-item {
   animation: fadeInLeft 0.8s ease-out;
   animation-fill-mode: both;
 }
@@ -224,20 +236,19 @@ nav a:hover::after, .menu-item:hover::after {
   }
 }
 
-/* Timeline Line Animation */
 .timeline::before {
   animation: growLine 2s ease-out;
 }
 
 @keyframes growLine {
   from { height: 0; }
-  to { height: 100%; }
+  to   { height: 100%; }
 }
 
 /* ============================================
    IMAGE HOVER EFFECTS (Subtle)
    ============================================ */
-img, .image-container img {
+/* img, .image-container img {
   transition: all 0.3s ease;
   border-radius: 8px;
 }
@@ -247,7 +258,6 @@ img:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Profile Image */
 .profile-image, img[class*="avatar"] {
   transition: all 0.3s ease;
 }
@@ -255,38 +265,36 @@ img:hover {
 .profile-image:hover, img[class*="avatar"]:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
+} */
 
 /* ============================================
    TEXT EFFECTS (Minimal)
    ============================================ */
-/* Gradient Text (Subtle) */
-.gradient-text {
+/* .gradient-text {
   background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glowing Text (Subtle) */
 .glow-text {
   color: var(--gradient-1);
   font-weight: 600;
-}
+} */
 
 /* ============================================
-   SCROLL ANIMATIONS
+   SCROLL ANIMATIONS (Gentle)
    ============================================ */
-.scroll-reveal {
+/* .scroll-reveal {
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease-out;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
 }
 
 .scroll-reveal.active {
   opacity: 1;
   transform: translateY(0);
-}
+} */
 
 /* ============================================
    LOADING ANIMATIONS
@@ -299,12 +307,12 @@ img:hover {
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
- (Gentle)
-   ============================================ */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 /* ============================================
    PARTICLE EFFECT (Minimal)
    ============================================ */
@@ -335,8 +343,8 @@ img:hover {
     transform: translateY(0) translateX(0);
     opacity: 0;
   }
-  10% { opacity: 0.3; }
-  90% { opacity: 0.3; }
+  10%  { opacity: 0.3; }
+  90%  { opacity: 0.3; }
   100% {
     transform: translateY(-100vh) translateX(50px);
     opacity: 0;
@@ -346,11 +354,11 @@ img:hover {
 /* ============================================
    DARK MODE ENHANCEMENTS
    ============================================ */
-.dark body::be3;
+.dark body::before {
+  opacity: 0.03;
 }
 
 .dark article.card:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2
   box-shadow: 0 20px 60px rgba(102, 126, 234, 0.5);
 }
 
@@ -361,7 +369,7 @@ img:hover {
   article.card:hover {
     transform: translateY(-5px) scale(1.01);
   }
-  
+
   .particle {
     animation-duration: 30s;
   }
@@ -437,7 +445,7 @@ img:hover {
 
 @keyframes expandWidth {
   from { width: 0; margin: 3rem auto; }
-  to { width: 100%; margin: 3rem 0; }
+  to   { width: 100%; margin: 3rem 0; }
 }
 
 /* ============================================
@@ -467,7 +475,7 @@ img:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   animation: shimmer 2s infinite;
 }
 
@@ -476,7 +484,7 @@ img:hover {
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
+  0%   { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 

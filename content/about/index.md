@@ -5,7 +5,7 @@ layout: "simple"
 ---
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img class="nozoom" src="profile.jpg" alt="Tuna Girişken" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+  <img class="nozoom protected-img" src="profile.jpg" alt="Tuna Girişken" draggable="false" oncontextmenu="return false;" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.2); -webkit-user-select: none; user-select: none; pointer-events: auto;">
 </div>
 
 {{< lead >}}

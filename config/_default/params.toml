@@ -4,6 +4,7 @@ autoSwitchAppearance = true
 
 enableSearch = true
 enableCodeCopy = true
+disableImageZoom = true
 mainSections = ["posts"]
 robots = ""
 
@@ -91,6 +92,9 @@ robots = ""
   cardView = true
   cardViewScreenWidth = false
   
+[footer]
+  showThemeAttribution = false
+
 [firebase]
   apiKey = ""
   authDomain = ""

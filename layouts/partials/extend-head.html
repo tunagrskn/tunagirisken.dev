@@ -134,4 +134,23 @@
 .skill-item:hover span {
   color: #667eea;
 }
+
+/* Profile Image Protection - sağ tık & sürükleme engeli */
+.protected-img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+}
 </style>
+
+<!-- Profil görseli sağ tık koruması -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.protected-img').forEach(function(img) {
+      img.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+      img.addEventListener('dragstart', function(e) { e.preventDefault(); });
+    });
+  });
+</script>
