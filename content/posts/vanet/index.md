@@ -4,7 +4,7 @@ date: 2025-01-05
 draft: false
 description: "VANET teknolojisi, akıllı ulaşım sistemlerinin temelini oluşturan araç ağlarının kapsamlı analizi"
 tags: ["VANET", "Ad-Hoc Networks", "Akıllı Ulaşım", "V2V", "V2I", "Otomotiv"]
-categories: ["Embedded Systems", "Networking"]
+categories: ["Networking"]
 series: ["Ad-Hoc Networks"]
 showHero: true
 ---

@@ -1,0 +1,55 @@
+{{/* Unified navigation bar — Electric Blue design system */}}
+<nav class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    {{/* Left: Logo + Desktop Nav */}}
+    <div class="flex items-center gap-8">
+      <a href="{{ "/" | relLangURL }}" class="flex items-center gap-2 group no-underline">
+        <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-[20px]">terminal</span>
+        </div>
+        <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">{{ .Site.Title }}</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        {{ range .Site.Menus.main }}
+          {{ $menuURL := .URL | relLangURL }}
+          {{ $isCurrent := or (and (eq $menuURL "/") $.IsHome) (and (ne $menuURL "/") (hasPrefix $.RelPermalink $menuURL)) }}
+          <a class="text-sm font-medium transition-colors no-underline {{ if $isCurrent }}text-primary font-semibold{{ else }}text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary{{ end }}"
+             href="{{ $menuURL }}"
+             {{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}target="_blank"{{ end }}>
+            {{ .Name }}
+          </a>
+        {{ end }}
+      </div>
+    </div>
+
+    {{/* Right: Theme toggle + Mobile menu */}}
+    <div class="flex items-center gap-3">
+      <button
+        id="appearance-switcher"
+        type="button"
+        aria-label="Tema değiştir"
+        class="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-surface-dark text-slate-700 dark:text-slate-300 hover:bg-primary hover:text-white transition-all">
+        <span class="material-symbols-outlined text-[20px] block dark:hidden">dark_mode</span>
+        <span class="material-symbols-outlined text-[20px] hidden dark:block">light_mode</span>
+      </button>
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden flex items-center justify-center rounded-lg size-10 hover:bg-slate-100 dark:hover:bg-surface-dark transition-colors"
+        aria-label="Menü">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+
+  {{/* Mobile Menu Dropdown */}}
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-border-dark bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-3">
+      {{ range .Site.Menus.main }}
+        <a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors no-underline py-1"
+           href="{{ .URL | relLangURL }}">
+          {{ .Name }}
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</nav>

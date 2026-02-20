@@ -9,17 +9,23 @@ title = "Tuna Girişken"
   rtl = false
   dateFormat = "2 January 2006"
   description = "Embedded Linux, Yocto, güvenlik-kritik sistemler ve gerçek zamanlı otomotiv çözümleri"
+  copyright = "© { year } Tuna Girişken"
   
-[author]
+[params.author]
   name = "Tuna Girişken"
-  image = "img/avatar.jpg"
+  image = "img/new_profile.jpeg"
   headline = "Gömülü Yazılım Mühendisi @ Karluna Engineering"
-  bio = "4+ yıllık güvenlik-kritik sistem mimarisi deneyimi | ARM Cortex | Yocto Linux | DO-178C | CAN/J1939"
+  bio = "Savunma ve otomotiv sektörlerinde 5 yılı aşkın deneyime sahip bir Kıdemli Gömülü Yazılım Mühendisi olarak, Baykar Teknoloji ve TÜBİTAK SAGE'de emniyet kritik aviyonik ve gömülü yazılım mimarileri geliştirdim. Bugün ise gerçek zamanlı sistemler, gömülü Linux ve güvenli haberleşme uzmanlığım ile elektrikli araçlar için uçtan uca bir Telematics Control Unit (TCU) sisteminin geliştirmesine teknik liderlik ediyorum."
   links = [
-    { email = "mailto:tunagirisken@outlook.com" },
+    { email = "mailto:info@tunagirisken.com" },
     { github = "https://github.com/tunagrskn" },
     { linkedin = "https://www.linkedin.com/in/tunagrskn" }
   ]
+
+[[menus.main]]
+  name = "Ana Sayfa"
+  pageRef = "/"
+  weight = 5
 
 [[menus.main]]
   name = "Yazılar"
@@ -27,19 +33,14 @@ title = "Tuna Girişken"
   weight = 10
 
 [[menus.main]]
-  name = "Etiketler"
-  pageRef = "tags"
+  name = "Hakkımda"
+  pageRef = "about"
   weight = 20
 
 [[menus.main]]
-  name = "Kategoriler"
-  pageRef = "categories"
+  name = "İletişim"
+  pageRef = "contact"
   weight = 30
-
-[[menus.main]]
-  name = "Hakkımda"
-  pageRef = "about"
-  weight = 40
 
 # Footer Menüsü
 [[menus.footer]]
@@ -54,5 +55,5 @@ title = "Tuna Girişken"
 
 [[menus.footer]]
   name = "E-posta"
-  url = "mailto:tunagirisken@outlook.com"
+  url = "mailto:info@tunagirisken.com"
   weight = 30

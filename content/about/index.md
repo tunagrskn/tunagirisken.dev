@@ -1,7 +1,6 @@
 ---
 title: "Hakkımda"
 date: 2025-01-05
-layout: "simple"
 ---
 
 <div style="text-align: center; margin: 2rem 0;">
@@ -114,22 +113,6 @@ Gerçek zamanlı işletim sistemleri (RTLinux, Zephyr) üzerinde, zamanlama hass
 %100 İngilizce Burs | Bitirme Projesi: PID kontrolü ile RF tabanlı step motor kontrol sistemi
 {{< /timelineItem >}}
 {{< /timeline >}}
-
----
-
-## İletişim
-
-{{< button href="https://github.com/tunagrskn" target="_blank" >}}
-{{< icon "github" >}} GitHub
-{{< /button >}}
-
-{{< button href="https://linkedin.com/in/tunagrskn" target="_blank" >}}
-{{< icon "linkedin" >}} LinkedIn  
-{{< /button >}}
-
-{{< button href="mailto:tunagirisken@outlook.com" >}}
-{{< icon "email" >}} Email
-{{< /button >}}
 
 ---
 

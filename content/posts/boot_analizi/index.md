@@ -1,8 +1,8 @@
 ---
-title: "Boot Performansı Analizi: Boot Süresini Ölçme ve Optimize Etme Araçları"
+title: "Gömülü Linux Boot Optimizasyonu"
 date: 2025-01-05
 draft: false
-description: "Boot Performansı Analizi: Boot Süresini Ölçme ve Optimize Etme Araçları"
+description: "systemd-analyze ve bootchart araçlarıyla Linux boot süresini ölçme, analiz etme ve optimize etme rehberi"
 tags: ["Linux", "Boot", "Embedded Systems", "Performans", "Yocto"]
 categories: ["Embedded Systems"]
 showHero: true
@@ -167,13 +167,13 @@ systemctl list-unit-files --state=enabled
 # Boot'ta gerekmeyen servisleri devre dışı bırak
 systemctl disable <servis-adi>
 
-# Bir servisin başlamasını tamamen engelle (disable'dan daha güçlü)
+# Bir servisin başlamasını tamamen engelle
 systemctl mask <servis-adi>
 
 # Devre dışı bırakmak için yaygın adaylar:
 systemctl disable bluetooth.service
 systemctl disable avahi-daemon.service
-systemctl disable ModemManager.service  # gerekmiyorsa
+systemctl disable ModemManager.service
 ```
 
 ### 2. Servis Dependency'lerini Optimize Edin

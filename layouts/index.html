@@ -1,0 +1,166 @@
+<!doctype html>
+<html
+  lang="{{ with site.Params.isoCode | default (site.LanguageCode | default `tr`) }}{{- . -}}{{ end }}"
+  dir="{{ cond (site.Params.rtl | default false) `rtl` `ltr` }}"
+  class="scroll-smooth"
+  data-default-appearance="{{ site.Params.defaultAppearance | default `dark` }}"
+  data-auto-appearance="{{ site.Params.autoSwitchAppearance | default `true` }}">
+  {{- partial "head.html" . -}}
+  {{- partialCached "init.html" . -}}
+
+  <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30" style="font-family: 'Inter', sans-serif;">
+
+    {{ partial "custom-nav.html" . }}
+
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-24">
+      {{/* =================== HERO SECTION =================== */}}
+      <section class="flex flex-col">
+        <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div class="flex-1 space-y-6">
+            {{/* Status Badge */}}
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Yeni projelere açık
+            </div>
+
+            {{/* Headline */}}
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+              World is <span class="text-primary">Open Source</span>
+            </h1>
+
+            {{/* Bio */}}
+            <p class="max-w-2xl text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+              Senior Embedded Software Engineer | Embedded Linux | MS in Computer Engineering
+            </p>
+
+            {{/* CTA Buttons */}}
+            <div class="flex flex-wrap gap-4 pt-4">
+              <a href="{{ "posts/" | relURL }}"
+                 class="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:shadow-xl hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5 no-underline">
+                <span class="material-symbols-outlined">rocket_launch</span>
+                Yazılarım
+              </a>
+              <a href="{{ "about/" | relURL }}"
+                 class="flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-surface-dark text-slate-900 dark:text-white border border-slate-200 dark:border-border-dark rounded-lg font-bold hover:bg-slate-200 dark:hover:bg-slate-800 transition-all no-underline">
+                <span class="material-symbols-outlined">download</span>
+                CV Görüntüle
+              </a>
+            </div>
+          </div>
+
+          {{/* Decorative Code Card (right side, lg only) */}}
+          <div class="hidden lg:block w-72 relative">
+            <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+            <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-border-dark">
+              {{ $avatar := resources.Get "img/new_profile.jpeg" }}
+              {{ if $avatar }}
+                {{ $avatarLarge := $avatar.Fit "576x864 q95" }}
+                <img src="{{ $avatarLarge.RelPermalink }}" alt="{{ .Site.Params.Author.name | default `Tuna Girişken` }}" class="w-full h-auto object-contain">
+              {{ end }}
+            </div>
+          </div>
+        </div>
+
+        {{/* ---- Social Connectivity ---- */}}
+        <div class="mt-16 pt-8 border-t border-slate-200 dark:border-border-dark">
+          <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-6">Bağlantılar</p>
+          <div class="flex flex-wrap gap-4">
+            {{ range .Site.Params.Author.links }}
+              {{ range $name, $url := . }}
+                {{ if eq $name "linkedin" }}
+                  <a class="group flex items-center gap-3 px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary transition-all no-underline"
+                     href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+                    <svg class="h-5 w-5 fill-current text-slate-400 group-hover:text-primary transition-colors" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                    <span class="text-sm font-semibold">LinkedIn</span>
+                  </a>
+                {{ else if eq $name "github" }}
+                  <a class="group flex items-center gap-3 px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary transition-all no-underline"
+                     href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+                    <svg class="h-5 w-5 fill-current text-slate-400 group-hover:text-primary transition-colors" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span class="text-sm font-semibold">GitHub</span>
+                  </a>
+                {{ else if eq $name "email" }}
+                  <a class="group flex items-center gap-3 px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary transition-all no-underline"
+                     href="{{ $url }}">
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">mail</span>
+                    <span class="text-sm font-semibold">E-posta</span>
+                  </a>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </section>
+
+      {{/* =================== RECENT POSTS (Project Teasers) =================== */}}
+      {{ $recentPosts := (where .Site.RegularPages "Section" "posts") | first 2 }}
+      {{ if $recentPosts }}
+      <section class="mt-24">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold tracking-tight">Son Yazılar</h2>
+          <a class="text-sm font-bold text-primary flex items-center gap-1 hover:underline no-underline" href="{{ "posts/" | relURL }}">
+            Tüm Yazılar <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {{ range $recentPosts }}
+            {{ $featuredImage := "" }}
+            {{ $images := .Resources.ByType "image" }}
+            {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+              {{ if not $featuredImage }}
+                {{ $featuredImage = $images.GetMatch . }}
+              {{ end }}
+            {{ end }}
+            <a href="{{ .RelPermalink }}"
+               class="group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all no-underline block">
+              {{ if $featuredImage }}
+                {{ $heroImg := $featuredImage.Fill "640x360 Center" }}
+                <div class="aspect-video w-full bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+                  <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                       src="{{ $heroImg.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+                </div>
+              {{ end }}
+              <div class="p-6">
+                <div class="flex gap-2 mb-3">
+                  {{ range .Params.categories | first 1 }}
+                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary/20 text-primary">{{ . }}</span>
+                  {{ end }}
+                  <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">{{ .ReadingTime }} dk</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors text-slate-900 dark:text-white">
+                  {{ .Title }}
+                </h3>
+                {{ with .Description }}
+                  <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{{ . }}</p>
+                {{ end }}
+              </div>
+            </a>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+    </main>
+
+    {{ partial "custom-footer.html" . }}
+
+    {{/* Search overlay (if enabled) */}}
+    {{ if .Site.Params.enableSearch | default false }}
+      {{- partial "search.html" . -}}
+    {{ end }}
+
+    {{/* Mobile Menu Toggle */}}
+    <script>
+      (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+          btn.addEventListener('click', function() { menu.classList.toggle('hidden'); });
+        }
+      })();
+    </script>
+  </body>
+</html>

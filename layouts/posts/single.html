@@ -1,0 +1,341 @@
+<!doctype html>
+<html
+  lang="{{ with site.Params.isoCode | default (site.LanguageCode | default `tr`) }}{{- . -}}{{ end }}"
+  dir="{{ cond (site.Params.rtl | default false) `rtl` `ltr` }}"
+  class="scroll-smooth"
+  data-default-appearance="{{ site.Params.defaultAppearance | default `dark` }}"
+  data-auto-appearance="{{ site.Params.autoSwitchAppearance | default `true` }}">
+  {{- partial "head.html" . -}}
+  {{- partialCached "init.html" . -}}
+
+  <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30" style="font-family: 'Inter', sans-serif;">
+
+    {{ partial "custom-nav.html" . }}
+
+    {{/* =================== HERO IMAGE (Full-bleed, scroll-blur) =================== */}}
+    {{ $featuredImage := "" }}
+    {{ $images := .Resources.ByType "image" }}
+    {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+      {{ if not $featuredImage }}
+        {{ $featuredImage = $images.GetMatch . }}
+      {{ end }}
+    {{ end }}
+
+    {{ $showHero := and $featuredImage (.Params.showHero | default (site.Params.article.showHero | default false)) }}
+
+    {{ if $showHero }}
+      {{ $heroImg := $featuredImage.Resize "1600x webp" }}
+      {{/* Spacer so content starts below the visible hero area */}}
+      <div class="h-[280px] md:h-[380px] lg:h-[440px]"></div>
+
+      {{/* Fixed background image */}}
+      <div id="hero-bg" class="fixed inset-x-0 top-0 h-[700px] md:h-[800px] z-0 overflow-hidden">
+        <img id="hero-bg-img"
+             src="{{ $heroImg.RelPermalink }}" alt=""
+             role="presentation" loading="eager" decoding="async" fetchpriority="high"
+             class="absolute inset-0 w-full h-full object-cover">
+        {{/* Bottom gradient fade into page background */}}
+        <div class="absolute inset-0 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/40 dark:via-background-dark/40 to-transparent"></div>
+        {{/* Extra dim overlay for readability */}}
+        <div class="absolute inset-0 bg-background-light/30 dark:bg-background-dark/50"></div>
+      </div>
+
+      {{/* Blur overlay — starts transparent, becomes opaque on scroll */}}
+      <div id="hero-blur-overlay"
+           class="fixed inset-x-0 top-0 h-[700px] md:h-[800px] z-[1] backdrop-blur-2xl bg-background-light/70 dark:bg-background-dark/60 opacity-0 pointer-events-none transition-none"></div>
+    {{ end }}
+
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-16 relative z-10">
+
+      {{/* =================== ARTICLE HEADER =================== */}}
+      <header class="mb-12 max-w-3xl">
+        {{/* Breadcrumb */}}
+        <nav class="flex items-center gap-2 text-sm text-slate-400 dark:text-slate-500 mb-6">
+          <a href="{{ "/" | relLangURL }}" class="hover:text-primary transition-colors no-underline">Ana Sayfa</a>
+          <span class="material-symbols-outlined text-xs">chevron_right</span>
+          <a href="{{ "posts/" | relURL }}" class="hover:text-primary transition-colors no-underline">Yazılar</a>
+          <span class="material-symbols-outlined text-xs">chevron_right</span>
+          <span class="text-slate-600 dark:text-slate-300 truncate">{{ .Title }}</span>
+        </nav>
+
+        {{/* Categories */}}
+        {{ with .Params.categories }}
+          <div class="flex flex-wrap gap-2 mb-4">
+            {{ range . }}
+              <a href="{{ printf "/categories/%s/" (. | urlize) | relURL }}"
+                 class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors no-underline">
+                {{ . }}
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{/* Title */}}
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight mb-6">
+          {{ .Title | emojify }}
+        </h1>
+
+        {{/* Meta */}}
+        <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">calendar_today</span>
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">schedule</span>
+            <span>{{ .ReadingTime }} dk okuma</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">notes</span>
+            <span>{{ .WordCount }} kelime</span>
+          </div>
+        </div>
+
+        {{/* Tags */}}
+        {{ with .Params.tags }}
+          <div class="flex flex-wrap gap-2 mt-5">
+            {{ range . }}
+              <a href="{{ printf "/tags/%s/" (. | urlize) | relURL }}"
+                 class="text-xs font-medium px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary/50 hover:text-primary transition-all no-underline">
+                #{{ . }}
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </header>
+
+      {{/* =================== CONTENT LAYOUT (TOC + ARTICLE) =================== */}}
+      {{ $enableToc := site.Params.article.showTableOfContents | default false }}
+      {{ $enableToc = .Params.showTableOfContents | default $enableToc }}
+      {{ $showToc := and $enableToc (in .TableOfContents "<ul") }}
+
+      <div class="flex flex-col lg:flex-row gap-12">
+        {{/* Table of Contents — Sidebar */}}
+        {{ if $showToc }}
+          <aside class="hidden lg:block lg:w-64 shrink-0 order-last">
+            <div class="sticky top-24">
+              <p class="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">toc</span>
+                İçindekiler
+              </p>
+              <nav class="toc-custom text-sm leading-relaxed space-y-1 max-h-[70vh] overflow-y-auto pr-2">
+                {{ .TableOfContents }}
+              </nav>
+            </div>
+          </aside>
+        {{ end }}
+
+        {{/* Article Body */}}
+        <article class="min-w-0 flex-1 max-w-3xl">
+          {{/* Mobile TOC */}}
+          {{ if $showToc }}
+            <details class="lg:hidden mb-8 group">
+              <summary class="cursor-pointer flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <span class="material-symbols-outlined text-base text-primary">toc</span>
+                İçindekiler
+                <span class="material-symbols-outlined text-base ml-auto group-open:rotate-180 transition-transform">expand_more</span>
+              </summary>
+              <nav class="mt-3 px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 text-sm leading-relaxed toc-custom">
+                {{ .TableOfContents }}
+              </nav>
+            </details>
+          {{ end }}
+
+          {{/* Prose Content */}}
+          <div class="
+            prose prose-slate dark:prose-invert max-w-none
+            prose-headings:font-bold prose-headings:tracking-tight
+            prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-200 prose-h2:dark:border-slate-700
+            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+            prose-h4:text-lg prose-h4:mt-6
+            prose-p:leading-relaxed prose-p:text-slate-700 prose-p:dark:text-slate-300
+            prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium
+            prose-strong:text-slate-900 prose-strong:dark:text-white
+            prose-code:text-sm prose-code:bg-slate-100 prose-code:dark:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+            prose-pre:bg-slate-900 prose-pre:dark:bg-slate-950 prose-pre:rounded-xl prose-pre:border prose-pre:border-slate-700 prose-pre:shadow-lg
+            prose-img:rounded-xl prose-img:shadow-md prose-img:border prose-img:border-slate-200 prose-img:dark:border-slate-700
+            prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-blockquote:px-6
+            prose-table:text-sm
+            prose-th:bg-slate-100 prose-th:dark:bg-slate-800 prose-th:px-4 prose-th:py-2
+            prose-td:px-4 prose-td:py-2 prose-td:border-slate-200 prose-td:dark:border-slate-700
+            prose-li:text-slate-700 prose-li:dark:text-slate-300
+            prose-hr:border-slate-200 prose-hr:dark:border-slate-700
+          ">
+            {{ .Content }}
+          </div>
+
+          {{/* =================== SHARING LINKS =================== */}}
+          {{ $sharingLinks := .Params.sharingLinks | default (.Site.Params.article.sharingLinks | default false) }}
+          {{ with $sharingLinks }}
+            <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-700">
+              <p class="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">share</span>
+                Paylaş
+              </p>
+              <div class="flex flex-wrap gap-3">
+                {{ $links := site.Data.sharing }}
+                {{ range . }}
+                  {{ with index $links . }}
+                    <a target="_blank" rel="noopener noreferrer"
+                       href="{{ printf .url $.Permalink $.Title }}"
+                       title="{{ i18n .title }}"
+                       aria-label="{{ i18n .title }}"
+                       class="flex items-center justify-center size-10 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-primary hover:text-white transition-all no-underline">
+                      {{ partial "icon.html" .icon }}
+                    </a>
+                  {{ end }}
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+
+          {{/* =================== ARTICLE PAGINATION (Prev/Next) =================== */}}
+          {{ $prev := .PrevInSection }}
+          {{ $next := .NextInSection }}
+          {{ if or $prev $next }}
+            <div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {{ with $next }}
+                  <a href="{{ .RelPermalink }}"
+                     class="group flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary/50 transition-all no-underline">
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">arrow_back</span>
+                    <div class="min-w-0">
+                      <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1">Önceki Yazı</p>
+                      <p class="text-sm font-semibold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">{{ .Title }}</p>
+                    </div>
+                  </a>
+                {{ else }}
+                  <div></div>
+                {{ end }}
+                {{ with $prev }}
+                  <a href="{{ .RelPermalink }}"
+                     class="group flex items-center justify-end gap-3 p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary/50 transition-all no-underline text-right">
+                    <div class="min-w-0">
+                      <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1">Sonraki Yazı</p>
+                      <p class="text-sm font-semibold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">{{ .Title }}</p>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">arrow_forward</span>
+                  </a>
+                {{ else }}
+                  <div></div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+
+          {{/* =================== RELATED POSTS =================== */}}
+          {{ $related := .Site.RegularPages.Related . | first 3 }}
+          {{ if $related }}
+            <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-700">
+              <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                İlgili Yazılar
+              </h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {{ range $related }}
+                  {{ $relImg := "" }}
+                  {{ $relImages := .Resources.ByType "image" }}
+                  {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+                    {{ if not $relImg }}
+                      {{ $relImg = $relImages.GetMatch . }}
+                    {{ end }}
+                  {{ end }}
+                  <a href="{{ .RelPermalink }}"
+                     class="group rounded-xl overflow-hidden bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary/50 transition-all no-underline block">
+                    {{ if $relImg }}
+                      {{ $thumb := $relImg.Fill "400x225 Center" }}
+                      <div class="aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                             src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+                      </div>
+                    {{ end }}
+                    <div class="p-4">
+                      <p class="text-xs text-slate-400 dark:text-slate-500 mb-1">{{ .Date.Format "2 Jan 2006" }}</p>
+                      <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+                        {{ .Title }}
+                      </h3>
+                    </div>
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </article>
+      </div>
+    </main>
+
+    {{ partial "custom-footer.html" . }}
+
+    {{/* Search overlay */}}
+    {{ if .Site.Params.enableSearch | default false }}
+      {{- partial "search.html" . -}}
+    {{ end }}
+
+    {{/* Mobile Menu Toggle */}}
+    <script>
+      (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+          btn.addEventListener('click', function() { menu.classList.toggle('hidden'); });
+        }
+      })();
+    </script>
+
+    {{/* Code Copy Button */}}
+    {{ if site.Params.enableCodeCopy | default true }}
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('pre > code').forEach(function(block) {
+          var pre = block.parentElement;
+          pre.style.position = 'relative';
+          var btn = document.createElement('button');
+          btn.className = 'absolute top-2 right-2 px-2 py-1 rounded-md bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity';
+          btn.textContent = 'Kopyala';
+          pre.classList.add('group');
+          btn.style.opacity = '0';
+          pre.addEventListener('mouseenter', function() { btn.style.opacity = '1'; });
+          pre.addEventListener('mouseleave', function() { btn.style.opacity = '0'; });
+          btn.addEventListener('click', function() {
+            navigator.clipboard.writeText(block.textContent).then(function() {
+              btn.textContent = 'Kopyalandı!';
+              setTimeout(function() { btn.textContent = 'Kopyala'; }, 2000);
+            });
+          });
+          pre.appendChild(btn);
+        });
+      });
+    </script>
+    {{ end }}
+
+    {{/* Hero Scroll-Blur Effect */}}
+    {{ if $showHero }}
+    <script>
+      (function() {
+        var overlay = document.getElementById('hero-blur-overlay');
+        var heroBg  = document.getElementById('hero-bg');
+        if (!overlay || !heroBg) return;
+        var SCROLL_RANGE = 400;
+        function onScroll() {
+          var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+          var ratio = Math.min(y / SCROLL_RANGE, 1);
+          overlay.style.opacity = ratio;
+          // slight parallax on the background image
+          var img = document.getElementById('hero-bg-img');
+          if (img) img.style.transform = 'translateY(' + (y * 0.25) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+          // hide hero layers once fully off-screen for perf
+          if (ratio >= 1) {
+            heroBg.style.visibility  = 'hidden';
+            overlay.style.visibility = 'hidden';
+          } else {
+            heroBg.style.visibility  = '';
+            overlay.style.visibility = '';
+          }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
+    {{ end }}
+  </body>
+</html>

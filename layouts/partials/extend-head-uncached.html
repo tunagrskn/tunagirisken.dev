@@ -1,0 +1,57 @@
+{{/* Electric Blue design system — load Tailwind CDN + fonts on custom pages only */}}
+{{ $isCustomPage := or .IsHome (hasPrefix .RelPermalink "/about/") (hasPrefix .RelPermalink "/contact/") (eq .Section "posts") }}
+{{ if $isCustomPage }}
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#256af4",
+          "background-light": "#f5f6f8",
+          "background-dark": "#0f172a",
+          "surface-dark": "#1e293b",
+          "border-dark": "#334155",
+        },
+        fontFamily: {
+          "display": ["Inter", "sans-serif"]
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+      },
+    },
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  /* Table of Contents — Electric Blue style */
+  .toc-custom #TableOfContents ul { list-style: none; padding-left: 0; margin: 0; }
+  .toc-custom #TableOfContents ul ul { padding-left: 1rem; }
+  .toc-custom #TableOfContents li { margin-bottom: 0.25rem; }
+  .toc-custom #TableOfContents a {
+    display: block;
+    padding: 0.25rem 0.75rem;
+    border-left: 2px solid transparent;
+    border-radius: 0 0.375rem 0.375rem 0;
+    color: #64748b;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+  .toc-custom #TableOfContents a:hover {
+    color: #256af4;
+    border-left-color: #256af4;
+    background: rgba(37, 106, 244, 0.05);
+  }
+</style>
+{{ end }}
