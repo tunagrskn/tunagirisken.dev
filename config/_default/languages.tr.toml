@@ -8,7 +8,7 @@ title = "Tuna Girişken"
   isoCode = "tr"
   rtl = false
   dateFormat = "2 January 2006"
-  description = "Embedded Linux, Yocto, güvenlik-kritik sistemler ve gerçek zamanlı otomotiv çözümleri"
+  description = "Gömülü sistemler ve yazılım dünyası üzerine teknik notlar, kişisel deneyimler ve mühendislik çözümleri."
   copyright = "© { year } Tuna Girişken"
   
 [params.author]
